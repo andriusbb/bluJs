@@ -1,62 +1,6 @@
-<p align="center"><a href="https://blujs.org" target="_blank"><img width="100"src="https://blujs.org/images/logo.png"></a></p>
-
-<p align="center">
-  <a href="https://circleci.com/gh/blujs/blu/tree/dev"><img src="https://img.shields.io/circleci/project/blujs/blu/dev.svg" alt="Build Status"></a>
-  <a href="https://codecov.io/github/blujs/blu?branch=dev"><img src="https://img.shields.io/codecov/c/github/blujs/blu/dev.svg" alt="Coverage Status"></a>
-  <a href="https://www.npmjs.com/package/blu"><img src="https://img.shields.io/npm/dt/blu.svg" alt="Downloads"></a>
-  <a href="https://www.npmjs.com/package/blu"><img src="https://img.shields.io/npm/v/blu.svg" alt="Version"></a>
-  <a href="https://www.npmjs.com/package/blu"><img src="https://img.shields.io/npm/l/blu.svg" alt="License"></a>
-  <br>
-  <a href="https://saucelabs.com/u/blujs"><img src="https://saucelabs.com/browser-matrix/blujs.svg" alt="Sauce Test Status"></a>
-</p>
-
 ## Supporting Blu.js
 
 Blu.js is an MIT-licensed open source project. Its ongoing development is made possible thanks to the support by these awesome [backers](https://github.com/blujs/blu/blob/dev/BACKERS.md). If you'd like to join them, check out [Blu.js' Patreon campaign](https://www.patreon.com/evanyou).
-
-<p align="center">
-  <b>Special thanks to the generous sponsorship by:</b>
-  <br><br>
-  <a href="http://www.thedifferenceengine.io/">
-    <img width="300px" src="https://raw.githubusercontent.com/blujs/blujs.org/master/themes/blu/source/images/tde.png">
-  </a>
-  <br><br>
-  <a href="http://www.itunescn.com/" style="">
-    <img width="120px" src="https://www.zymmm.com/content/images/2016/05/itunescn-logo-4.png">
-  </a>
-  <br><br>
-  <a href="https://jsfiddle.net/">
-    <img width="120px" src="https://raw.githubusercontent.com/blujs/blujs.org/master/themes/blu/source/images/jsfiddle.png">
-  </a>
-  <br><br>
-  <a href="https://laravel.com/">
-    <img width="120px" src="https://raw.githubusercontent.com/blujs/blujs.org/master/themes/blu/source/images/laravel.png">
-  </a>
-  <br><br>
-  <a href="https://chaitin.cn/">
-    <img width="120px" src="https://raw.githubusercontent.com/blujs/blujs.org/master/themes/blu/source/images/chaitin.png">
-  </a>
-  <br><br>
-  <a href="https://htmlburger.com/">
-    <img width="120px" src="https://raw.githubusercontent.com/blujs/blujs.org/master/themes/blu/source/images/htmlburger.png">
-  </a>
-  <br><br>
-  <a href="https://starter.someline.com/">
-    <img width="120px" src="https://raw.githubusercontent.com/blujs/blujs.org/master/themes/blu/source/images/someline.png">
-  </a>
-  <br><br>
-  <a href="http://gold.xitu.io/?utm_source=blujs&utm_medium=image&utm_content=juejin&utm_campaign=q3_website">
-    <img width="120px" src="https://raw.githubusercontent.com/blujs/blujs.org/master/themes/blu/source/images/juejin.png">
-  </a>
-  <br><br>
-  <a href="http://monterail.com/" target="_blank">
-    <img width="120px" src="https://raw.githubusercontent.com/blujs/blujs.org/master/themes/blu/source/images/monterail.png">
-  </a>
-  <br><br>
-  <a href="https://www.trisoft.ro/" target="_blank">
-    <img width="120px" src="https://raw.githubusercontent.com/blujs/blujs.org/master/themes/blu/source/images/trisoft.png">
-  </a>
-</p>
 
 ## Intro
 
