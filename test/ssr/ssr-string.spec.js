@@ -1,5 +1,5 @@
-import Vue from '../../dist/vue.common.js'
-import { createRenderer } from '../../packages/vue-server-renderer'
+import Blu from '../../dist/blu.common.js'
+import { createRenderer } from '../../packages/blu-server-renderer'
 const { renderToString } = createRenderer()
 
 describe('SSR: renderToString', () => {
@@ -301,7 +301,7 @@ describe('SSR: renderToString', () => {
       data: {
         test: 'hi',
         isRed: true,
-        imageUrl: 'https://vuejs.org/images/logo.png'
+        imageUrl: 'https://blujs.org/images/logo.png'
       },
       components: {
         test: {
@@ -324,7 +324,7 @@ describe('SSR: renderToString', () => {
           '<div id="ho" class="red"></div> ' +
           '<span>hi</span> ' +
           '<input value="hi"> ' +
-          '<img src="https://vuejs.org/images/logo.png"> ' +
+          '<img src="https://blujs.org/images/logo.png"> ' +
           '<div class="a">test</div> ' +
           '<span class="b">testAsync</span>' +
         '</div>'
@@ -433,7 +433,7 @@ describe('SSR: renderToString', () => {
         }
       }
     })
-    renderer.renderToString(new Vue({
+    renderer.renderToString(new Blu({
       render () {
         const h = this.$createElement
         return h('p', {
@@ -510,7 +510,7 @@ describe('SSR: renderToString', () => {
   })
 
   it('should catch error', done => {
-    renderToString(new Vue({
+    renderToString(new Blu({
       render () {
         throw new Error('oops')
       }
@@ -522,7 +522,7 @@ describe('SSR: renderToString', () => {
 })
 
 function renderVmWithOptions (options, cb) {
-  renderToString(new Vue(options), (err, res) => {
+  renderToString(new Blu(options), (err, res) => {
     expect(err).toBeNull()
     cb(res)
   })

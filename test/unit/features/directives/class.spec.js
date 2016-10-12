@@ -1,7 +1,7 @@
-import Vue from 'vue'
+import Blu from 'blu'
 
 function assertClass (assertions, done) {
-  const vm = new Vue({
+  const vm = new Blu({
     template: '<div class="foo" :class="value"></div>',
     data: { value: '' }
   }).$mount()
@@ -66,7 +66,7 @@ describe('Directive v-bind:class', () => {
   })
 
   it('class merge between parent and child', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: '<child class="a" :class="value"></child>',
       data: { value: 'b' },
       components: {
@@ -94,7 +94,7 @@ describe('Directive v-bind:class', () => {
   })
 
   it('class merge between multiple nested components sharing same element', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: `
         <component1 :class="componentClass1">
           <component2 :class="componentClass2">
@@ -139,7 +139,7 @@ describe('Directive v-bind:class', () => {
   })
 
   it('deep update', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: '<div :class="test"></div>',
       data: {
         test: { a: true, b: false }
@@ -155,7 +155,7 @@ describe('Directive v-bind:class', () => {
   // a vdom patch edge case where the user has several un-keyed elements of the
   // same tag next to each other, and toggling them.
   it('properly remove staticClass for toggling un-keyed children', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: `
         <div>
           <div v-if="ok" class="a"></div>

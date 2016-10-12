@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import Blu from 'blu'
 import injectStyles from './inject-styles'
 import { isIE9 } from 'core/util/env'
 import { nextFrame } from 'web/runtime/transition-util'
@@ -14,7 +14,7 @@ if (!isIE9) {
     })
 
     it('basic transition', done => {
-      const vm = new Vue({
+      const vm = new Blu({
         template: '<div><transition><div v-if="ok" class="test">foo</div></transition></div>',
         data: { ok: true }
       }).$mount(el)
@@ -39,7 +39,7 @@ if (!isIE9) {
     })
 
     it('named transition', done => {
-      const vm = new Vue({
+      const vm = new Blu({
         template: '<div><transition name="test"><div v-if="ok" class="test">foo</div></transition></div>',
         data: { ok: true }
       }).$mount(el)
@@ -64,7 +64,7 @@ if (!isIE9) {
     })
 
     it('custom transition classes', done => {
-      const vm = new Vue({
+      const vm = new Blu({
         template: `
           <div>
             <transition
@@ -99,7 +99,7 @@ if (!isIE9) {
     })
 
     it('dynamic transition', done => {
-      const vm = new Vue({
+      const vm = new Blu({
         template: `
           <div>
             <transition :name="trans">
@@ -136,7 +136,7 @@ if (!isIE9) {
     it('inline transition object', done => {
       const enter = jasmine.createSpy('enter')
       const leave = jasmine.createSpy('leave')
-      const vm = new Vue({
+      const vm = new Blu({
         render (h) {
           return h('div', null, [
             h('transition', {
@@ -186,7 +186,7 @@ if (!isIE9) {
       const afterLeaveSpy = jasmine.createSpy('afterLeave')
       const afterEnterSpy = jasmine.createSpy('afterEnter')
 
-      const vm = new Vue({
+      const vm = new Blu({
         template: `
           <div>
             <transition
@@ -261,7 +261,7 @@ if (!isIE9) {
       const afterLeaveSpy = jasmine.createSpy('afterLeave')
       const afterEnterSpy = jasmine.createSpy('afterEnter')
 
-      const vm = new Vue({
+      const vm = new Blu({
         template: `
           <div>
             <transition
@@ -328,7 +328,7 @@ if (!isIE9) {
 
     it('explicit user callback in JavaScript hooks', done => {
       let next
-      const vm = new Vue({
+      const vm = new Blu({
         template: `<div>
           <transition name="test" @enter="enter" @leave="leave">
             <div v-if="ok" class="test">foo</div>
@@ -371,7 +371,7 @@ if (!isIE9) {
     it('css: false', done => {
       const enterSpy = jasmine.createSpy('enter')
       const leaveSpy = jasmine.createSpy('leave')
-      const vm = new Vue({
+      const vm = new Blu({
         template: `
           <div>
             <transition :css="false" name="test" @enter="enter" @leave="leave">
@@ -400,7 +400,7 @@ if (!isIE9) {
     it('no transition detected', done => {
       const enterSpy = jasmine.createSpy('enter')
       const leaveSpy = jasmine.createSpy('leave')
-      const vm = new Vue({
+      const vm = new Blu({
         template: '<div><transition name="nope" @enter="enter" @leave="leave"><div v-if="ok">foo</div></transition></div>',
         data: { ok: true },
         methods: {
@@ -426,7 +426,7 @@ if (!isIE9) {
 
     it('enterCancelled', done => {
       const spy = jasmine.createSpy('enterCancelled')
-      const vm = new Vue({
+      const vm = new Blu({
         template: `
           <div>
             <transition name="test" @enter-cancelled="enterCancelled">
@@ -458,7 +458,7 @@ if (!isIE9) {
 
     it('should remove stale leaving elements', done => {
       const spy = jasmine.createSpy('afterLeave')
-      const vm = new Vue({
+      const vm = new Blu({
         template: `
           <div>
             <transition name="test" @after-leave="afterLeave">
@@ -490,7 +490,7 @@ if (!isIE9) {
     })
 
     it('transition with v-show', done => {
-      const vm = new Vue({
+      const vm = new Blu({
         template: `
           <div>
             <transition name="test">
@@ -524,7 +524,7 @@ if (!isIE9) {
     })
 
     it('transition with v-show, inside child component', done => {
-      const vm = new Vue({
+      const vm = new Blu({
         template: `
           <div>
             <test v-show="ok"></test>
@@ -561,7 +561,7 @@ if (!isIE9) {
 
     it('leaveCancelled (v-show only)', done => {
       const spy = jasmine.createSpy('leaveCancelled')
-      const vm = new Vue({
+      const vm = new Blu({
         template: `
           <div>
             <transition name="test" @leave-cancelled="leaveCancelled">
@@ -594,7 +594,7 @@ if (!isIE9) {
     })
 
     it('animations', done => {
-      const vm = new Vue({
+      const vm = new Blu({
         template: `
           <div>
             <transition name="test-anim">
@@ -625,7 +625,7 @@ if (!isIE9) {
     })
 
     it('explicit transition type', done => {
-      const vm = new Vue({
+      const vm = new Blu({
         template: `
           <div>
             <transition name="test-anim-long" type="animation">
@@ -661,7 +661,7 @@ if (!isIE9) {
     })
 
     it('transition on appear', done => {
-      const vm = new Vue({
+      const vm = new Blu({
         template: `
           <div>
             <transition name="test"
@@ -685,7 +685,7 @@ if (!isIE9) {
     })
 
     it('transition on appear with v-show', done => {
-      const vm = new Vue({
+      const vm = new Blu({
         template: `
           <div>
             <transition name="test" appear>
@@ -706,7 +706,7 @@ if (!isIE9) {
     })
 
     it('transition on SVG elements', done => {
-      const vm = new Vue({
+      const vm = new Blu({
         template: `
           <svg>
             <transition>
@@ -739,7 +739,7 @@ if (!isIE9) {
     })
 
     it('transition on child components', done => {
-      const vm = new Vue({
+      const vm = new Blu({
         template: `
           <div>
             <transition>
@@ -779,7 +779,7 @@ if (!isIE9) {
     })
 
     it('transition inside child component', done => {
-      const vm = new Vue({
+      const vm = new Blu({
         template: `
           <div>
             <test v-if="ok" class="test"></test>
@@ -817,7 +817,7 @@ if (!isIE9) {
     })
 
     it('custom transition higher-order component', done => {
-      const vm = new Vue({
+      const vm = new Blu({
         template: '<div><my-transition><div v-if="ok" class="test">foo</div></my-transition></div>',
         data: { ok: true },
         components: {

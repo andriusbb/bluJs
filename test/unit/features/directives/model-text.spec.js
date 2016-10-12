@@ -1,9 +1,9 @@
-import Vue from 'vue'
+import Blu from 'blu'
 import { isIE9, isAndroid } from 'core/util/env'
 
 describe('Directive v-model text', () => {
   it('should update value both ways', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       data: {
         test: 'b'
       },
@@ -20,7 +20,7 @@ describe('Directive v-model text', () => {
   })
 
   it('.lazy modifier', () => {
-    const vm = new Vue({
+    const vm = new Blu({
       data: {
         test: 'b'
       },
@@ -36,7 +36,7 @@ describe('Directive v-model text', () => {
   })
 
   it('.number modifier', () => {
-    const vm = new Vue({
+    const vm = new Blu({
       data: {
         test: 1
       },
@@ -52,7 +52,7 @@ describe('Directive v-model text', () => {
   })
 
   it('.trim modifier', () => {
-    const vm = new Vue({
+    const vm = new Blu({
       data: {
         test: 'hi'
       },
@@ -66,7 +66,7 @@ describe('Directive v-model text', () => {
 
   if (isIE9) {
     it('IE9 selectionchange', done => {
-      const vm = new Vue({
+      const vm = new Blu({
         data: {
           test: 'foo'
         },
@@ -88,7 +88,7 @@ describe('Directive v-model text', () => {
 
   if (!isAndroid) {
     it('compositionevents', function (done) {
-      const vm = new Vue({
+      const vm = new Blu({
         data: {
           test: 'foo'
         },
@@ -109,7 +109,7 @@ describe('Directive v-model text', () => {
   }
 
   it('warn inline value attribute', () => {
-    const vm = new Vue({
+    const vm = new Blu({
       data: {
         test: 'foo'
       },
@@ -121,7 +121,7 @@ describe('Directive v-model text', () => {
   })
 
   it('warn textarea inline content', function () {
-    const vm = new Vue({
+    const vm = new Blu({
       data: {
         test: 'foo'
       },
@@ -133,7 +133,7 @@ describe('Directive v-model text', () => {
   })
 
   it('warn invalid tag', () => {
-    new Vue({
+    new Blu({
       data: {
         test: 'foo'
       },
@@ -145,7 +145,7 @@ describe('Directive v-model text', () => {
   // #3468
   it('should have higher priority than user v-on events', () => {
     const spy = jasmine.createSpy()
-    const vm = new Vue({
+    const vm = new Blu({
       data: {
         a: 'a'
       },
@@ -162,7 +162,7 @@ describe('Directive v-model text', () => {
   })
 
   it('warn binding to v-for alias', () => {
-    new Vue({
+    new Blu({
       data: {
         strings: ['hi']
       },

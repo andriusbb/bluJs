@@ -116,7 +116,7 @@ export function observe (value: any): Observer | void {
     !config._isServer &&
     (Array.isArray(value) || isPlainObject(value)) &&
     Object.isExtensible(value) &&
-    !value._isVue
+    !value._isBlu
   ) {
     ob = new Observer(value)
   }
@@ -194,9 +194,9 @@ export function set (obj: Array<any> | Object, key: any, val: any) {
     return
   }
   const ob = obj.__ob__
-  if (obj._isVue || (ob && ob.vmCount)) {
+  if (obj._isBlu || (ob && ob.vmCount)) {
     process.env.NODE_ENV !== 'production' && warn(
-      'Avoid adding reactive properties to a Vue instance or its root $data ' +
+      'Avoid adding reactive properties to a Blu instance or its root $data ' +
       'at runtime - declare it upfront in the data option.'
     )
     return
@@ -215,9 +215,9 @@ export function set (obj: Array<any> | Object, key: any, val: any) {
  */
 export function del (obj: Object, key: string) {
   const ob = obj.__ob__
-  if (obj._isVue || (ob && ob.vmCount)) {
+  if (obj._isBlu || (ob && ob.vmCount)) {
     process.env.NODE_ENV !== 'production' && warn(
-      'Avoid deleting properties on a Vue instance or its root $data ' +
+      'Avoid deleting properties on a Blu instance or its root $data ' +
       '- just set it to null.'
     )
     return

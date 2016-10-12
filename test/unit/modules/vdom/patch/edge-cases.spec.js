@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import Blu from 'blu'
 
 describe('vdom patch: edge cases', () => {
   // exposed by #3406
@@ -6,7 +6,7 @@ describe('vdom patch: edge cases', () => {
   // to be used in multiple places, and its element will be replaced. This
   // causes patch errors when node ops depend on the vnode's element position.
   it('should handle static vnodes by key', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       data: {
         ok: true
       },
@@ -31,7 +31,7 @@ describe('vdom patch: edge cases', () => {
   // later when patching the next element a DOM insertion uses it as the
   // reference node, causing a parent mismatch.
   it('should handle static node edge case when it\'s reused AND used as a reference node for insertion', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       data: {
         ok: true
       },

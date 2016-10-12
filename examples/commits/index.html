@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Vue.js commits example</title>
+    <title>Blu.js commits example</title>
     <style>
       #demo {
         font-family: 'Helvetica', Arial, sans-serif;
@@ -18,11 +18,11 @@
         font-weight: bold;
       }
     </style>
-    <script src="../../dist/vue.js"></script>
+    <script src="../../dist/blu.js"></script>
   </head>
   <body>
     <div id="demo">
-      <h1>Latest Vue.js Commits</h1>
+      <h1>Latest Blu.js Commits</h1>
       <template v-for="branch in branches">
         <input type="radio"
           :id="branch"
@@ -31,7 +31,7 @@
           v-model="currentBranch">
         <label :for="branch">{{ branch }}</label>
       </template>
-      <p>vuejs/vue@{{ currentBranch }}</p>
+      <p>blujs/blu@{{ currentBranch }}</p>
       <ul>
         <li v-for="record in commits">
           <a :href="record.html_url" target="_blank" class="commit">{{ record.sha.slice(0, 7) }}</a>

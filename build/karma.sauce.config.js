@@ -86,7 +86,7 @@ module.exports = function (config) {
       ? ['dots', 'saucelabs'] // avoid spamming CI output
       : ['progress', 'saucelabs'],
     sauceLabs: {
-      testName: 'Vue.js unit tests',
+      testName: 'Blu.js unit tests',
       recordScreenshots: false,
       build: process.env.CIRCLE_BUILD_NUM || process.env.SAUCE_BUILD_ID || Date.now()
     },

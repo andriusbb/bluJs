@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import Blu from 'blu'
 import injectStyles from '../transition/inject-styles'
 import { isIE9 } from 'core/util/env'
 import { nextFrame } from 'web/runtime/transition-util'
@@ -42,7 +42,7 @@ describe('Component keep-alive', () => {
   }
 
   it('should work', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: `
         <div v-if="ok">
           <keep-alive>
@@ -86,7 +86,7 @@ describe('Component keep-alive', () => {
   it('deeply nested keep-alive should be destroyed properly', done => {
     one.template = `<div><keep-alive><two></two></keep-alive></div>`
     one.components = { two }
-    const vm = new Vue({
+    const vm = new Blu({
       template: `<div><parent v-if="ok"></parent></div>`,
       data: { ok: true },
       components: {
@@ -110,7 +110,7 @@ describe('Component keep-alive', () => {
   if (!isIE9) {
     it('with transition-mode out-in', done => {
       let next
-      const vm = new Vue({
+      const vm = new Blu({
         template: `<div>
           <transition name="test" mode="out-in" @after-leave="afterLeave">
             <keep-alive>
@@ -195,7 +195,7 @@ describe('Component keep-alive', () => {
 
     it('with transition-mode in-out', done => {
       let next
-      const vm = new Vue({
+      const vm = new Blu({
         template: `<div>
           <transition name="test" mode="in-out" @after-enter="afterEnter">
             <keep-alive>
@@ -290,7 +290,7 @@ describe('Component keep-alive', () => {
 
     it('dynamic components, in-out with early cancel', done => {
       let next
-      const vm = new Vue({
+      const vm = new Blu({
         template: `<div>
           <transition name="test" mode="in-out" @after-enter="afterEnter">
             <keep-alive>

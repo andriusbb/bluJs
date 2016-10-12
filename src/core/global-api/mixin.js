@@ -2,8 +2,8 @@
 
 import { mergeOptions } from '../util/index'
 
-export function initMixin (Vue: GlobalAPI) {
-  Vue.mixin = function (mixin: Object) {
-    Vue.options = mergeOptions(Vue.options, mixin)
+export function initMixin (Blu: GlobalAPI) {
+  Blu.mixin = function (mixin: Object) {
+    Blu.options = mergeOptions(Blu.options, mixin)
   }
 }

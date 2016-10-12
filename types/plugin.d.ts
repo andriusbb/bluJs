@@ -1,6 +1,6 @@
-import { Vue as _Vue } from "./vue";
+import { Blu as _Blu } from "./blu";
 
-export type PluginFunction<T> = (Vue: typeof _Vue, options?: T) => void;
+export type PluginFunction<T> = (Blu: typeof _Blu, options?: T) => void;
 
 export interface PluginObject<T> {
   install: PluginFunction<T>;

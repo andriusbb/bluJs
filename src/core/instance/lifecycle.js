@@ -33,8 +33,8 @@ export function initLifecycle (vm: Component) {
   vm._isBeingDestroyed = false
 }
 
-export function lifecycleMixin (Vue: Class<Component>) {
-  Vue.prototype._mount = function (
+export function lifecycleMixin (Blu: Class<Component>) {
+  Blu.prototype._mount = function (
     el?: Element | void,
     hydrating?: boolean
   ): Component {
@@ -46,7 +46,7 @@ export function lifecycleMixin (Vue: Class<Component>) {
         /* istanbul ignore if */
         if (vm.$options.template) {
           warn(
-            'You are using the runtime-only build of Vue where the template ' +
+            'You are using the runtime-only build of Blu where the template ' +
             'option is not available. Either pre-compile the templates into ' +
             'render functions, or use the compiler-included build.',
             vm
@@ -73,7 +73,7 @@ export function lifecycleMixin (Vue: Class<Component>) {
     return vm
   }
 
-  Vue.prototype._update = function (vnode: VNode, hydrating?: boolean) {
+  Blu.prototype._update = function (vnode: VNode, hydrating?: boolean) {
     const vm: Component = this
     if (vm._isMounted) {
       callHook(vm, 'beforeUpdate')
@@ -84,19 +84,19 @@ export function lifecycleMixin (Vue: Class<Component>) {
     const prevVnode = vm._vnode
     vm._vnode = vnode
     if (!prevVnode) {
-      // Vue.prototype.__patch__ is injected in entry points
+      // Blu.prototype.__patch__ is injected in entry points
       // based on the rendering backend used.
       vm.$el = vm.__patch__(vm.$el, vnode, hydrating)
     } else {
       vm.$el = vm.__patch__(prevVnode, vnode)
     }
     activeInstance = prevActiveInstance
-    // update __vue__ reference
+    // update __blu__ reference
     if (prevEl) {
-      prevEl.__vue__ = null
+      prevEl.__blu__ = null
     }
     if (vm.$el) {
-      vm.$el.__vue__ = vm
+      vm.$el.__blu__ = vm
     }
     // if parent is an HOC, update its $el as well
     if (vm.$vnode && vm.$parent && vm.$vnode === vm.$parent._vnode) {
@@ -107,7 +107,7 @@ export function lifecycleMixin (Vue: Class<Component>) {
     }
   }
 
-  Vue.prototype._updateFromParent = function (
+  Blu.prototype._updateFromParent = function (
     propsData: ?Object,
     listeners: ?Object,
     parentVnode: VNode,
@@ -146,14 +146,14 @@ export function lifecycleMixin (Vue: Class<Component>) {
     }
   }
 
-  Vue.prototype.$forceUpdate = function () {
+  Blu.prototype.$forceUpdate = function () {
     const vm: Component = this
     if (vm._watcher) {
       vm._watcher.update()
     }
   }
 
-  Vue.prototype.$destroy = function () {
+  Blu.prototype.$destroy = function () {
     const vm: Component = this
     if (vm._isBeingDestroyed) {
       return
@@ -183,9 +183,9 @@ export function lifecycleMixin (Vue: Class<Component>) {
     callHook(vm, 'destroyed')
     // turn off all instance listeners.
     vm.$off()
-    // remove __vue__ reference
+    // remove __blu__ reference
     if (vm.$el) {
-      vm.$el.__vue__ = null
+      vm.$el.__blu__ = null
     }
   }
 }

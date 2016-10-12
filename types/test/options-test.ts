@@ -1,11 +1,11 @@
-import Vue = require("../index");
+import Blu = require("../index");
 import { ComponentOptions, FunctionalComponentOptions } from "../index";
 
-interface Component extends Vue {
+interface Component extends Blu {
   a: number;
 }
 
-Vue.component('component', {
+Blu.component('component', {
   data() {
     this.$mount
     this.a
@@ -90,19 +90,19 @@ Vue.component('component', {
     }, [
       createElement(),
       createElement("div", "message"),
-      createElement(Vue.component("component")),
-      createElement({} as ComponentOptions<Vue>),
+      createElement(Blu.component("component")),
+      createElement({} as ComponentOptions<Blu>),
       createElement({ functional: true }),
 
-      createElement(() => Vue.component("component")),
-      createElement(() => ( {} as ComponentOptions<Vue> )),
+      createElement(() => Blu.component("component")),
+      createElement(() => ( {} as ComponentOptions<Blu> )),
       createElement(() => {
         return new Promise((resolve) => {
-          resolve({} as ComponentOptions<Vue>);
+          resolve({} as ComponentOptions<Blu>);
         })
       }),
       createElement((resolve, reject) => {
-        resolve({} as ComponentOptions<Vue>);
+        resolve({} as ComponentOptions<Blu>);
         reject();
       }),
 
@@ -144,8 +144,8 @@ Vue.component('component', {
     }
   },
   components: {
-    a: Vue.component(""),
-    b: {} as ComponentOptions<Vue>
+    a: Blu.component(""),
+    b: {} as ComponentOptions<Blu>
   },
   transitions: {},
   filters: {
@@ -153,14 +153,14 @@ Vue.component('component', {
       return value * 2;
     }
   },
-  parent: new Vue,
-  mixins: [Vue.component(""), ({} as ComponentOptions<Vue>)],
+  parent: new Blu,
+  mixins: [Blu.component(""), ({} as ComponentOptions<Blu>)],
   name: "Component",
-  extends: {} as ComponentOptions<Vue>,
+  extends: {} as ComponentOptions<Blu>,
   delimiters: ["${", "}"]
 } as ComponentOptions<Component>);
 
-Vue.component('functional-component', {
+Blu.component('functional-component', {
   props: ['prop'],
   functional: true,
   render(createElement, context) {
@@ -173,9 +173,9 @@ Vue.component('functional-component', {
   }
 } as FunctionalComponentOptions);
 
-Vue.component("async-component", (resolve, reject) => {
+Blu.component("async-component", (resolve, reject) => {
   setTimeout(() => {
-    resolve(Vue.component("component"));
+    resolve(Blu.component("component"));
   }, 0);
   return new Promise((resolve) => {
     resolve({ functional: true } as FunctionalComponentOptions);

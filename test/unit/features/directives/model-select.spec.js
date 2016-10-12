@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import Blu from 'blu'
 import { looseEqual } from 'shared/util'
 
 /**
@@ -24,7 +24,7 @@ function getValue (option) {
 
 describe('Directive v-model select', () => {
   it('should work', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       data: {
         test: 'b'
       },
@@ -50,7 +50,7 @@ describe('Directive v-model select', () => {
   })
 
   it('should work with value bindings', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       data: {
         test: 2
       },
@@ -75,7 +75,7 @@ describe('Directive v-model select', () => {
   })
 
   it('should work with value bindings (object loose equal)', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       data: {
         test: { a: 2 }
       },
@@ -103,7 +103,7 @@ describe('Directive v-model select', () => {
   })
 
   it('should work with v-for', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       data: {
         test: 'b',
         opts: ['a', 'b', 'c']
@@ -133,7 +133,7 @@ describe('Directive v-model select', () => {
   })
 
   it('should work with v-for & value bindings', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       data: {
         test: 2,
         opts: [1, 2, 3]
@@ -162,7 +162,7 @@ describe('Directive v-model select', () => {
   })
 
   it('multiple', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       data: {
         test: ['b']
       },
@@ -190,7 +190,7 @@ describe('Directive v-model select', () => {
   })
 
   it('multiple with static template', () => {
-    const vm = new Vue({
+    const vm = new Blu({
       template:
       '<select multiple>' +
         '<option selected>a</option>' +
@@ -205,7 +205,7 @@ describe('Directive v-model select', () => {
   })
 
   it('multiple + v-for', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       data: {
         test: ['b'],
         opts: ['a', 'b', 'c']
@@ -238,7 +238,7 @@ describe('Directive v-model select', () => {
   })
 
   it('should warn inline selected', () => {
-    const vm = new Vue({
+    const vm = new Blu({
       data: {
         test: null
       },
@@ -253,7 +253,7 @@ describe('Directive v-model select', () => {
   })
 
   it('should warn multiple with non-Array value', () => {
-    new Vue({
+    new Blu({
       data: {
         test: 'meh'
       },

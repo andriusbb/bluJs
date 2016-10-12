@@ -92,7 +92,7 @@ export function createRenderFunction (
       } else {
         if (getKey && !cache) {
           warnOnce(
-            `[vue-server-renderer] Component ${
+            `[blu-server-renderer] Component ${
               Ctor.options.name || '(anonymous)'
             } implemented serverCacheKey, ` +
             'but no cache was provided to the renderer.'
@@ -100,7 +100,7 @@ export function createRenderFunction (
         }
         if (getKey && !name) {
           warnOnce(
-            `[vue-server-renderer] Components that implement "serverCacheKey" ` +
+            `[blu-server-renderer] Components that implement "serverCacheKey" ` +
             `must also define a unique "name" option.`
           )
         }

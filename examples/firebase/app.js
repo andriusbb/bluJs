@@ -3,15 +3,15 @@ var emailRE = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@(
 // Setup Firebase
 var config = {
   apiKey: "AIzaSyAi_yuJciPXLFr_PYPeU3eTvtXf8jbJ8zw",
-  authDomain: "vue-demo-537e6.firebaseapp.com",
-  databaseURL: "https://vue-demo-537e6.firebaseio.com"
+  authDomain: "blu-demo-537e6.firebaseapp.com",
+  databaseURL: "https://blu-demo-537e6.firebaseio.com"
 }
 firebase.initializeApp(config)
 
 var usersRef = firebase.database().ref('users')
 
-// create Vue app
-var app = new Vue({
+// create Blu app
+var app = new Blu({
   // element to mount to
   el: '#app',
   // initial data
@@ -22,7 +22,7 @@ var app = new Vue({
     }
   },
   // firebase binding
-  // https://github.com/vuejs/vuefire
+  // https://github.com/blujs/blufire
   firebase: {
     users: usersRef
   },

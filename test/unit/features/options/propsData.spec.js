@@ -1,8 +1,8 @@
-import Vue from 'vue'
+import Blu from 'blu'
 
 describe('Options propsData', () => {
   it('should work', done => {
-    const A = Vue.extend({
+    const A = Blu.extend({
       props: ['a'],
       template: '<div>{{ a }}</div>'
     })
@@ -20,7 +20,7 @@ describe('Options propsData', () => {
   })
 
   it('warn non instantiation usage', () => {
-    Vue.extend({
+    Blu.extend({
       propsData: {
         a: 123
       }

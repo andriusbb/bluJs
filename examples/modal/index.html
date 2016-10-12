@@ -2,8 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Vue.js Modal Example</title>
-    <script src="../../dist/vue.js"></script>
+    <title>Blu.js Modal Example</title>
+    <script src="../../dist/blu.js"></script>
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
@@ -55,12 +55,12 @@
 
     <script>
       // register modal component
-      Vue.component('modal', {
+      Blu.component('modal', {
         template: '#modal-template'
       })
 
       // start app
-      new Vue({
+      new Blu({
         el: '#app',
         data: {
           showModal: false

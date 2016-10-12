@@ -1,8 +1,8 @@
-import Vue from 'vue'
+import Blu from 'blu'
 
 describe('Directive v-model checkbox', () => {
   it('should work', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       data: {
         test: true
       },
@@ -23,7 +23,7 @@ describe('Directive v-model checkbox', () => {
   })
 
   it('should respect value bindings', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       data: {
         test: 1,
         a: 1,
@@ -50,7 +50,7 @@ describe('Directive v-model checkbox', () => {
   })
 
   it('bind to Array value', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       data: {
         test: ['1']
       },
@@ -78,7 +78,7 @@ describe('Directive v-model checkbox', () => {
   })
 
   it('bind to Array value with value bindings', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       data: {
         test: [1]
       },
@@ -106,7 +106,7 @@ describe('Directive v-model checkbox', () => {
   })
 
   it('bind to Array value with value bindings (object loose equal)', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       data: {
         test: [{ a: 1 }]
       },
@@ -134,7 +134,7 @@ describe('Directive v-model checkbox', () => {
   })
 
   it('warn inline checked', () => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: `<input type="checkbox" v-model="test" checked>`,
       data: {
         test: false

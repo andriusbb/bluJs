@@ -1,10 +1,10 @@
-import Vue from 'vue'
+import Blu from 'blu'
 
 describe('Options el', () => {
   it('basic usage', () => {
     const el = document.createElement('div')
     el.innerHTML = '<span>{{message}}</span>'
-    const vm = new Vue({
+    const vm = new Blu({
       el,
       data: { message: 'hello world' }
     })
@@ -15,7 +15,7 @@ describe('Options el', () => {
   it('should be replaced when use togther with `template` option', () => {
     const el = document.createElement('div')
     el.innerHTML = '<span>{{message}}</span>'
-    const vm = new Vue({
+    const vm = new Blu({
       el,
       template: '<p id="app"><span>{{message}}</span></p>',
       data: { message: 'hello world' }
@@ -27,7 +27,7 @@ describe('Options el', () => {
   it('should be replaced when use togther with `render` option', () => {
     const el = document.createElement('div')
     el.innerHTML = '<span>{{message}}</span>'
-    const vm = new Vue({
+    const vm = new Blu({
       el,
       render (h) {
         return h('p', { staticAttrs: { id: 'app' }}, [
@@ -47,7 +47,7 @@ describe('Options el', () => {
         '<text :x="x" :y="y" :fill="color">{{ text }}</text>' +
         '<g><clipPath><foo></foo></clipPath></g>' +
       '</svg>'
-    const vm = new Vue({
+    const vm = new Blu({
       el: parent.childNodes[0],
       data: {
         x: 64,
@@ -70,7 +70,7 @@ describe('Options el', () => {
   it('properly decode attribute values when parsing templates from DOM', () => {
     const el = document.createElement('div')
     el.innerHTML = '<a href="/a?foo=bar&baz=qux" name="<abc>" single=\'"hi"\'></a>'
-    const vm = new Vue({ el })
+    const vm = new Blu({ el })
     expect(vm.$el.children[0].getAttribute('href')).toBe('/a?foo=bar&baz=qux')
     expect(vm.$el.children[0].getAttribute('name')).toBe('<abc>')
     expect(vm.$el.children[0].getAttribute('single')).toBe('"hi"')
@@ -79,12 +79,12 @@ describe('Options el', () => {
   it('decode attribute value newlines when parsing templates from DOM in IE', () => {
     const el = document.createElement('div')
     el.innerHTML = `<a :style="{\ncolor:'red'\n}"></a>`
-    const vm = new Vue({ el })
+    const vm = new Blu({ el })
     expect(vm.$el.children[0].style.color).toBe('red')
   })
 
   it('warn cannot find element', () => {
-    new Vue({ el: '#non-existent' })
+    new Blu({ el: '#non-existent' })
     expect('Cannot find element: #non-existent').toHaveBeenWarned()
   })
 })

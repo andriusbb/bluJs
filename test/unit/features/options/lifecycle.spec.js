@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import Blu from 'blu'
 
 describe('Options lifecyce hooks', () => {
   let spy
@@ -8,7 +8,7 @@ describe('Options lifecyce hooks', () => {
 
   describe('beforeCreate', () => {
     it('should allow modifying options', () => {
-      const vm = new Vue({
+      const vm = new Blu({
         data: {
           a: 1
         },
@@ -29,7 +29,7 @@ describe('Options lifecyce hooks', () => {
 
   describe('created', () => {
     it('should have completed observation', () => {
-      new Vue({
+      new Blu({
         data: {
           a: 1
         },
@@ -44,7 +44,7 @@ describe('Options lifecyce hooks', () => {
 
   describe('beforeMount', () => {
     it('should not have mounted', () => {
-      const vm = new Vue({
+      const vm = new Blu({
         beforeMount () {
           spy()
           expect(this._isMounted).toBe(false)
@@ -61,7 +61,7 @@ describe('Options lifecyce hooks', () => {
 
   describe('mounted', () => {
     it('should have mounted', () => {
-      const vm = new Vue({
+      const vm = new Blu({
         template: '<div></div>',
         mounted () {
           spy()
@@ -77,9 +77,9 @@ describe('Options lifecyce hooks', () => {
 
     // #3898
     it('should call for manually mounted instance with parent', () => {
-      const parent = new Vue()
+      const parent = new Blu()
       expect(spy).not.toHaveBeenCalled()
-      new Vue({
+      new Blu({
         parent,
         template: '<div></div>',
         mounted () {
@@ -91,7 +91,7 @@ describe('Options lifecyce hooks', () => {
 
     it('should mount child parent in correct order', () => {
       const calls = []
-      new Vue({
+      new Blu({
         template: '<div><test></test><div>',
         mounted () {
           calls.push('parent')
@@ -121,7 +121,7 @@ describe('Options lifecyce hooks', () => {
 
   describe('beforeUpdate', () => {
     it('should be called before update', done => {
-      const vm = new Vue({
+      const vm = new Blu({
         template: '<div>{{ msg }}</div>',
         data: { msg: 'foo' },
         beforeUpdate () {
@@ -140,7 +140,7 @@ describe('Options lifecyce hooks', () => {
 
   describe('updated', () => {
     it('should be called after update', done => {
-      const vm = new Vue({
+      const vm = new Blu({
         template: '<div>{{ msg }}</div>',
         data: { msg: 'foo' },
         updated () {
@@ -159,7 +159,7 @@ describe('Options lifecyce hooks', () => {
 
   describe('beforeDestroy', () => {
     it('should be called before destroy', () => {
-      const vm = new Vue({
+      const vm = new Blu({
         beforeDestroy () {
           spy()
           expect(this._isBeingDestroyed).toBe(false)
@@ -176,7 +176,7 @@ describe('Options lifecyce hooks', () => {
 
   describe('destroyed', () => {
     it('should be called after destroy', () => {
-      const vm = new Vue({
+      const vm = new Blu({
         destroyed () {
           spy()
           expect(this._isBeingDestroyed).toBe(true)

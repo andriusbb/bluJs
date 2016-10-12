@@ -1,21 +1,21 @@
-import * as V from "./vue";
+import * as V from "./blu";
 import * as Options from "./options";
 import * as Plugin from "./plugin";
 import * as VNode from "./vnode";
 
-// `Vue` in `export = Vue` must be a namespace
+// `Blu` in `export = Blu` must be a namespace
 // All available types are exported via this namespace
-declare namespace Vue {
+declare namespace Blu {
   export type CreateElement = V.CreateElement;
 
   export type Component = Options.Component;
   export type AsyncComponent = Options.AsyncComponent;
-  export type ComponentOptions<V extends Vue> = Options.ComponentOptions<V>;
+  export type ComponentOptions<V extends Blu> = Options.ComponentOptions<V>;
   export type FunctionalComponentOptions = Options.FunctionalComponentOptions;
   export type RenderContext = Options.RenderContext;
   export type PropOptions = Options.PropOptions;
-  export type ComputedOptions<V extends Vue> = Options.ComputedOptions<V>;
-  export type WatchHandler<V extends Vue> = Options.WatchHandler<V>;
+  export type ComputedOptions<V extends Blu> = Options.ComputedOptions<V>;
+  export type WatchHandler<V extends Blu> = Options.WatchHandler<V>;
   export type WatchOptions = Options.WatchOptions;
   export type DirectiveFunction = Options.DirectiveFunction;
   export type DirectiveOptions = Options.DirectiveOptions;
@@ -32,6 +32,6 @@ declare namespace Vue {
 }
 
 // TS cannot merge imported class with namespace, declare a subclass to bypass
-declare class Vue extends V.Vue {}
+declare class Blu extends V.Blu {}
 
-export = Vue;
+export = Blu;

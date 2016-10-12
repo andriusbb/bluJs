@@ -30,7 +30,7 @@ const attribute = new RegExp(
 )
 
 // could use https://www.w3.org/TR/1999/REC-xml-names-19990114/#NT-QName
-// but for Vue templates we can enforce a simple charset
+// but for Blu templates we can enforce a simple charset
 const ncname = '[a-zA-Z_][\\w\\-\\.]*'
 const qnameCapture = '((?:' + ncname + '\\:)?' + ncname + ')'
 const startTagOpen = new RegExp('^<' + qnameCapture)

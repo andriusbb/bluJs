@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
     <title></title>
-    <script src="../../dist/vue.js"></script>
+    <script src="../../dist/blu.js"></script>
     <script src="http://dynamicsjs.com/lib/dynamics.js"></script>
     <link rel="stylesheet" href="style.css">
     <!-- template for the component -->
@@ -31,16 +31,16 @@
       <draggable-header-view>
         <template slot="header">
           <h1>Elastic Draggable SVG Header</h1>
-          <p>with <a href="https://vuejs.org">Vue.js</a> + <a href="http://dynamicsjs.com">dynamics.js</a></p>
+          <p>with <a href="https://blujs.org">Blu.js</a> + <a href="http://dynamicsjs.com">dynamics.js</a></p>
         </template>
         <template slot="content">
-          <p>Note this is just an effect demo - there are of course many additional details if you want to use this in production, e.g. handling responsive sizes, reload threshold and content scrolling. Those are out of scope for this quick little hack. However, the idea is that you can hide them as internal details of a Vue.js component and expose a simple Web-Component-like interface.</p>
+          <p>Note this is just an effect demo - there are of course many additional details if you want to use this in production, e.g. handling responsive sizes, reload threshold and content scrolling. Those are out of scope for this quick little hack. However, the idea is that you can hide them as internal details of a Blu.js component and expose a simple Web-Component-like interface.</p>
         </template>
       </draggable-header-view>
     </div>
 
     <script>
-    Vue.component('draggable-header-view', {
+    Blu.component('draggable-header-view', {
       template: '#header-view-template',
       data: function () {
         return {
@@ -98,7 +98,7 @@
       }
     })
 
-    new Vue({ el: '#app' })
+    new Blu({ el: '#app' })
     </script>
   </body>
 </html>

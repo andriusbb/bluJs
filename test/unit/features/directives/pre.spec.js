@@ -1,8 +1,8 @@
-import Vue from 'vue'
+import Blu from 'blu'
 
 describe('Directive v-pre', function () {
   it('should not compile inner content', function () {
-    const vm = new Vue({
+    const vm = new Blu({
       template: `<div>
         <div v-pre>{{ a }}</div>
         <div>{{ a }}</div>
@@ -21,7 +21,7 @@ describe('Directive v-pre', function () {
   })
 
   it('should not compile on root node', function () {
-    const vm = new Vue({
+    const vm = new Blu({
       template: '<div v-pre>{{ a }}</div>',
       replace: true,
       data: {

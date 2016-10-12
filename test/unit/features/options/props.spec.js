@@ -1,8 +1,8 @@
-import Vue from 'vue'
+import Blu from 'blu'
 
 describe('Options props', () => {
   it('array syntax', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       data: {
         b: 'bar'
       },
@@ -26,7 +26,7 @@ describe('Options props', () => {
   })
 
   it('object syntax', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       data: {
         b: 'bar'
       },
@@ -50,14 +50,14 @@ describe('Options props', () => {
   })
 
   it('warn mixed syntax', () => {
-    new Vue({
+    new Blu({
       props: [{ b: String }]
     })
     expect('props must be strings when using array syntax').toHaveBeenWarned()
   })
 
   it('default values', () => {
-    const vm = new Vue({
+    const vm = new Blu({
       data: {
         b: undefined
       },
@@ -80,7 +80,7 @@ describe('Options props', () => {
   })
 
   it('default value reactivity', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       props: {
         a: {
           default: () => ({ b: 1 })
@@ -99,7 +99,7 @@ describe('Options props', () => {
   })
 
   it('warn object/array default values', () => {
-    new Vue({
+    new Blu({
       props: {
         a: {
           default: { b: 1 }
@@ -113,7 +113,7 @@ describe('Options props', () => {
   })
 
   it('warn missing required', () => {
-    new Vue({
+    new Blu({
       template: '<test></test>',
       components: {
         test: {
@@ -127,7 +127,7 @@ describe('Options props', () => {
 
   describe('assertions', () => {
     function makeInstance (value, type, validator, required) {
-      return new Vue({
+      return new Blu({
         template: '<test :test="val"></test>',
         data: {
           val: value
@@ -260,7 +260,7 @@ describe('Options props', () => {
   })
 
   it('should work with v-bind', () => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: `<test v-bind="{ a: 1, b: 2 }"></test>`,
       components: {
         test: {
@@ -273,7 +273,7 @@ describe('Options props', () => {
   })
 
   it('should warn data fields already defined as a prop', () => {
-    new Vue({
+    new Blu({
       template: '<test a="1"></test>',
       components: {
         test: {
@@ -291,7 +291,7 @@ describe('Options props', () => {
   })
 
   it('treat boolean props properly', () => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: '<comp ref="child" prop-a prop-b="prop-b"></comp>',
       components: {
         comp: {
@@ -310,7 +310,7 @@ describe('Options props', () => {
   })
 
   it('should respect default value of a Boolean prop', function () {
-    const vm = new Vue({
+    const vm = new Blu({
       template: '<test></test>',
       components: {
         test: {
@@ -333,7 +333,7 @@ describe('Options props', () => {
         msg: 'hello'
       }
     })
-    const parent = new Vue({
+    const parent = new Blu({
       template: '<comp :a="a.nested"></comp>',
       data: {
         a: a
@@ -360,7 +360,7 @@ describe('Options props', () => {
   })
 
   it('should not warn for non-required, absent prop', function () {
-    new Vue({
+    new Blu({
       template: '<test></test>',
       components: {
         test: {
@@ -379,7 +379,7 @@ describe('Options props', () => {
   // #3453
   it('should not fire watcher on object/array props when parent re-renders', done => {
     const spy = jasmine.createSpy()
-    const vm = new Vue({
+    const vm = new Blu({
       data: {
         arr: []
       },

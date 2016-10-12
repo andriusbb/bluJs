@@ -1,8 +1,8 @@
-import Vue from 'vue'
+import Blu from 'blu'
 
 describe('Directive v-model file', () => {
   it('warn to use @change instead', () => {
-    new Vue({
+    new Blu({
       data: {
         file: ''
       },

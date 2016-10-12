@@ -1,10 +1,10 @@
-import Vue from 'vue'
+import Blu from 'blu'
 import Watcher from 'core/observer/watcher'
 
 describe('Watcher', () => {
   let vm, spy
   beforeEach(() => {
-    vm = new Vue({
+    vm = new Blu({
       template: '<div></div>',
       data: {
         a: 1,
@@ -37,10 +37,10 @@ describe('Watcher', () => {
     const watcher1 = new Watcher(vm, 'b.e', spy)
     expect(watcher1.value).toBeUndefined()
     // check $add should not affect isolated children
-    const child2 = new Vue({ parent: vm })
+    const child2 = new Blu({ parent: vm })
     const watcher2 = new Watcher(child2, 'b.e', spy)
     expect(watcher2.value).toBeUndefined()
-    Vue.set(vm.b, 'e', 123)
+    Blu.set(vm.b, 'e', 123)
     waitForUpdate(() => {
       expect(watcher1.value).toBe(123)
       expect(watcher2.value).toBeUndefined()
@@ -52,7 +52,7 @@ describe('Watcher', () => {
   it('delete', done => {
     const watcher = new Watcher(vm, 'b.c', spy)
     expect(watcher.value).toBe(2)
-    Vue.delete(vm.b, 'c')
+    Blu.delete(vm.b, 'c')
     waitForUpdate(() => {
       expect(watcher.value).toBeUndefined()
       expect(spy).toHaveBeenCalledWith(undefined, 2)
@@ -107,7 +107,7 @@ describe('Watcher', () => {
     new Watcher(vm, 'b', spy, {
       deep: true
     })
-    Vue.set(vm.b, '_', vm.b)
+    Blu.set(vm.b, '_', vm.b)
     waitForUpdate(() => {
       expect(spy).toHaveBeenCalledWith(vm.b, vm.b)
       expect(spy.calls.count()).toBe(1)
@@ -120,11 +120,11 @@ describe('Watcher', () => {
 
   it('fire change for prop addition/deletion in non-deep mode', done => {
     new Watcher(vm, 'b', spy)
-    Vue.set(vm.b, 'e', 123)
+    Blu.set(vm.b, 'e', 123)
     waitForUpdate(() => {
       expect(spy).toHaveBeenCalledWith(vm.b, vm.b)
       expect(spy.calls.count()).toBe(1)
-      Vue.delete(vm.b, 'e')
+      Blu.delete(vm.b, 'e')
     }).then(() => {
       expect(spy.calls.count()).toBe(2)
     }).then(done)

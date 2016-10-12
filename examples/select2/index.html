@@ -2,8 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Vue.js custom directive integration example (select2)</title>
-    <script src="../../dist/vue.js"></script>
+    <title>Blu.js custom directive integration example (select2)</title>
+    <script src="../../dist/blu.js"></script>
     <script src="https://unpkg.com/jquery"></script>
     <script src="https://unpkg.com/select2@4.0.3"></script>
     <link href="https://unpkg.com/select2@4.0.3/dist/css/select2.min.css" rel="stylesheet">
@@ -38,7 +38,7 @@
     </script>
 
     <script>
-    Vue.component('select2', {
+    Blu.component('select2', {
       props: ['options', 'value'],
       template: '#select2-template',
       mounted: function () {
@@ -67,7 +67,7 @@
       }
     })
 
-    var vm = new Vue({
+    var vm = new Blu({
       el: '#el',
       template: '#demo-template',
       data: {

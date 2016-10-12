@@ -9,32 +9,32 @@ import { initAssetRegisters } from './assets'
 import { set, del } from '../observer/index'
 import builtInComponents from '../components/index'
 
-export function initGlobalAPI (Vue: GlobalAPI) {
+export function initGlobalAPI (Blu: GlobalAPI) {
   // config
   const configDef = {}
   configDef.get = () => config
   if (process.env.NODE_ENV !== 'production') {
     configDef.set = () => {
       util.warn(
-        'Do not replace the Vue.config object, set individual fields instead.'
+        'Do not replace the Blu.config object, set individual fields instead.'
       )
     }
   }
-  Object.defineProperty(Vue, 'config', configDef)
-  Vue.util = util
-  Vue.set = set
-  Vue.delete = del
-  Vue.nextTick = util.nextTick
+  Object.defineProperty(Blu, 'config', configDef)
+  Blu.util = util
+  Blu.set = set
+  Blu.delete = del
+  Blu.nextTick = util.nextTick
 
-  Vue.options = Object.create(null)
+  Blu.options = Object.create(null)
   config._assetTypes.forEach(type => {
-    Vue.options[type + 's'] = Object.create(null)
+    Blu.options[type + 's'] = Object.create(null)
   })
 
-  util.extend(Vue.options.components, builtInComponents)
+  util.extend(Blu.options.components, builtInComponents)
 
-  initUse(Vue)
-  initMixin(Vue)
-  initExtend(Vue)
-  initAssetRegisters(Vue)
+  initUse(Blu)
+  initMixin(Blu)
+  initExtend(Blu)
+  initAssetRegisters(Blu)
 }

@@ -1,7 +1,7 @@
 /* @flow */
 
 export function baseWarn (msg: string) {
-  console.error(`[Vue parser]: ${msg}`)
+  console.error(`[Blu parser]: ${msg}`)
 }
 
 export function pluckModuleFunction (

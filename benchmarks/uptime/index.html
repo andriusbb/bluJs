@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Vue benchmark</title>
+    <title>Blu benchmark</title>
     <style type="text/css">
       html, body {
         margin: 0;
@@ -80,11 +80,11 @@
         :days="server.days">
       </server-uptime>
     </div>
-    <script src="../../dist/vue.min.js"></script>
+    <script src="../../dist/blu.min.js"></script>
     <script>
       // functional components are prefect for small, presentational components
       // and they are much more efficient than stateful ones.
-      Vue.component('uptime-day', {
+      Blu.component('uptime-day', {
         props: ['day'],
         functional: true,
         render (h, ctx) {
@@ -96,7 +96,7 @@
         }
       })
 
-      Vue.component('server-uptime', {
+      Blu.component('server-uptime', {
         props: ['name', 'days'],
         computed: {
           upDays () {
@@ -152,7 +152,7 @@
       }
 
       var s = window.performance.now()
-      var app = new Vue({
+      var app = new Blu({
         el: '#app',
         data: {
           fps: 0,

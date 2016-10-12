@@ -1,6 +1,6 @@
 /* @flow */
 
-import Vue from '../instance/index'
+import Blu from '../instance/index'
 import VNode from './vnode'
 import { normalizeChildren } from './helpers'
 import { activeInstance, callHook } from '../instance/lifecycle'
@@ -23,7 +23,7 @@ export function createComponent (
   }
 
   if (isObject(Ctor)) {
-    Ctor = Vue.extend(Ctor)
+    Ctor = Blu.extend(Ctor)
   }
 
   if (typeof Ctor !== 'function') {
@@ -79,7 +79,7 @@ export function createComponent (
   // return a placeholder vnode
   const name = Ctor.options.name || tag
   const vnode = new VNode(
-    `vue-component-${Ctor.cid}${name ? `-${name}` : ''}`,
+    `blu-component-${Ctor.cid}${name ? `-${name}` : ''}`,
     data, undefined, undefined, undefined, undefined, context,
     { Ctor, propsData, listeners, tag, children }
   )
@@ -200,7 +200,7 @@ function resolveAsyncComponent (
 
     const resolve = (res: Object | Class<Component>) => {
       if (isObject(res)) {
-        res = Vue.extend(res)
+        res = Blu.extend(res)
       }
       // cache resolved
       factory.resolved = res

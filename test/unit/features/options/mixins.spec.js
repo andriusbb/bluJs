@@ -1,5 +1,5 @@
-import Vue from 'vue'
-const mergeOptions = Vue.util.mergeOptions
+import Blu from 'blu'
+const mergeOptions = Blu.util.mergeOptions
 
 describe('Options mixins', () => {
   it('vm should have options from mixin', () => {
@@ -12,7 +12,7 @@ describe('Options mixins', () => {
       }
     }
 
-    const vm = new Vue({
+    const vm = new Blu({
       mixins: [mixin],
       methods: {
         b: function () {}
@@ -89,7 +89,7 @@ describe('Options mixins', () => {
   })
 
   it('should accept constructors as mixins', () => {
-    const mixin = Vue.extend({
+    const mixin = Blu.extend({
       directives: {
         c: {}
       },
@@ -98,7 +98,7 @@ describe('Options mixins', () => {
       }
     })
 
-    const vm = new Vue({
+    const vm = new Blu({
       mixins: [mixin],
       methods: {
         b: function () {}

@@ -5,18 +5,18 @@ import { eventsMixin } from './events'
 import { lifecycleMixin } from './lifecycle'
 import { warn } from '../util/index'
 
-function Vue (options) {
+function Blu (options) {
   if (process.env.NODE_ENV !== 'production' &&
-    !(this instanceof Vue)) {
-    warn('Vue is a constructor and should be called with the `new` keyword')
+    !(this instanceof Blu)) {
+    warn('Blu is a constructor and should be called with the `new` keyword')
   }
   this._init(options)
 }
 
-initMixin(Vue)
-stateMixin(Vue)
-eventsMixin(Vue)
-lifecycleMixin(Vue)
-renderMixin(Vue)
+initMixin(Blu)
+stateMixin(Blu)
+eventsMixin(Blu)
+lifecycleMixin(Blu)
+renderMixin(Blu)
 
-export default Vue
+export default Blu

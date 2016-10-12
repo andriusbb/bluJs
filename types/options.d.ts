@@ -1,17 +1,17 @@
-import { Vue, CreateElement } from "./vue";
+import { Blu, CreateElement } from "./blu";
 import { VNode, VNodeData, VNodeDirective } from "./vnode";
 
 type Constructor = {
   new (...args: any[]): any;
 }
 
-export type Component = typeof Vue | ComponentOptions<Vue> | FunctionalComponentOptions;
+export type Component = typeof Blu | ComponentOptions<Blu> | FunctionalComponentOptions;
 export type AsyncComponent = (
   resolve: (component: Component) => void,
   reject: (reason?: any) => void
 ) => Promise<Component> | Component | void;
 
-export interface ComponentOptions<V extends Vue> {
+export interface ComponentOptions<V extends Blu> {
   data?: Object | ((this: V) => Object);
   props?: string[] | { [key: string]: PropOptions | Constructor | Constructor[] };
   propsData?: Object;
@@ -38,10 +38,10 @@ export interface ComponentOptions<V extends Vue> {
   transitions?: { [key: string]: Object };
   filters?: { [key: string]: Function };
 
-  parent?: Vue;
-  mixins?: (ComponentOptions<Vue> | typeof Vue)[];
+  parent?: Blu;
+  mixins?: (ComponentOptions<Blu> | typeof Blu)[];
   name?: string;
-  extends?: ComponentOptions<Vue> | typeof Vue;
+  extends?: ComponentOptions<Blu> | typeof Blu;
   delimiters?: [string, string];
 }
 
@@ -57,7 +57,7 @@ export interface RenderContext {
   children: VNode[];
   slots: any;
   data: VNodeData;
-  parent: Vue;
+  parent: Blu;
 }
 
 export interface PropOptions {

@@ -1,4 +1,4 @@
-import Vue from '../../../dist/vue.common.js'
+import Blu from '../../../dist/blu.common.js'
 
 const app = {
   name: 'app',
@@ -10,7 +10,7 @@ const app = {
 }
 
 export default () => {
-  return Promise.resolve(new Vue({
+  return Promise.resolve(new Blu({
     render: h => h(app, { props: { id: 1 }})
   }))
 }

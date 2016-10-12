@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import Blu from 'blu'
 
 function checkPrefixedProp (prop) {
   var el = document.createElement('div')
@@ -19,7 +19,7 @@ describe('Directive v-bind:style', () => {
   let vm
 
   beforeEach(() => {
-    vm = new Vue({
+    vm = new Blu({
       template: '<div :style="styles"></div>',
       data () {
         return {

@@ -1,8 +1,8 @@
-import Vue from 'vue'
+import Blu from 'blu'
 
 describe('Directive v-for', () => {
   it('should render array of primitive values', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: `
         <div>
           <span v-for="item in list">{{item}}</span>
@@ -13,7 +13,7 @@ describe('Directive v-for', () => {
       }
     }).$mount()
     expect(vm.$el.innerHTML).toBe('<span>a</span><span>b</span><span>c</span>')
-    Vue.set(vm.list, 0, 'd')
+    Blu.set(vm.list, 0, 'd')
     waitForUpdate(() => {
       expect(vm.$el.innerHTML).toBe('<span>d</span><span>b</span><span>c</span>')
       vm.list.push('d')
@@ -29,7 +29,7 @@ describe('Directive v-for', () => {
   })
 
   it('should render array of primitive values with index', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: `
         <div>
           <span v-for="(item, i) in list">{{i}}-{{item}}</span>
@@ -40,7 +40,7 @@ describe('Directive v-for', () => {
       }
     }).$mount()
     expect(vm.$el.innerHTML).toBe('<span>0-a</span><span>1-b</span><span>2-c</span>')
-    Vue.set(vm.list, 0, 'd')
+    Blu.set(vm.list, 0, 'd')
     waitForUpdate(() => {
       expect(vm.$el.innerHTML).toBe('<span>0-d</span><span>1-b</span><span>2-c</span>')
       vm.list.push('d')
@@ -56,7 +56,7 @@ describe('Directive v-for', () => {
   })
 
   it('should render array of object values', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: `
         <div>
           <span v-for="item in list">{{item.value}}</span>
@@ -71,7 +71,7 @@ describe('Directive v-for', () => {
       }
     }).$mount()
     expect(vm.$el.innerHTML).toBe('<span>a</span><span>b</span><span>c</span>')
-    Vue.set(vm.list, 0, { value: 'd' })
+    Blu.set(vm.list, 0, { value: 'd' })
     waitForUpdate(() => {
       expect(vm.$el.innerHTML).toBe('<span>d</span><span>b</span><span>c</span>')
       vm.list[0].value = 'e'
@@ -90,7 +90,7 @@ describe('Directive v-for', () => {
   })
 
   it('should render array of object values with index', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: `
         <div>
           <span v-for="(item, i) in list">{{i}}-{{item.value}}</span>
@@ -105,7 +105,7 @@ describe('Directive v-for', () => {
       }
     }).$mount()
     expect(vm.$el.innerHTML).toBe('<span>0-a</span><span>1-b</span><span>2-c</span>')
-    Vue.set(vm.list, 0, { value: 'd' })
+    Blu.set(vm.list, 0, { value: 'd' })
     waitForUpdate(() => {
       expect(vm.$el.innerHTML).toBe('<span>0-d</span><span>1-b</span><span>2-c</span>')
       vm.list[0].value = 'e'
@@ -124,7 +124,7 @@ describe('Directive v-for', () => {
   })
 
   it('should render an Object', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: `
         <div>
           <span v-for="val in obj">{{val}}</span>
@@ -138,17 +138,17 @@ describe('Directive v-for', () => {
     vm.obj.a = 3
     waitForUpdate(() => {
       expect(vm.$el.innerHTML).toBe('<span>3</span><span>1</span><span>2</span>')
-      Vue.set(vm.obj, 'd', 4)
+      Blu.set(vm.obj, 'd', 4)
     }).then(() => {
       expect(vm.$el.innerHTML).toBe('<span>3</span><span>1</span><span>2</span><span>4</span>')
-      Vue.delete(vm.obj, 'a')
+      Blu.delete(vm.obj, 'a')
     }).then(() => {
       expect(vm.$el.innerHTML).toBe('<span>1</span><span>2</span><span>4</span>')
     }).then(done)
   })
 
   it('should render an Object with key', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: `
         <div>
           <span v-for="(val, key) in obj">{{val}}-{{key}}</span>
@@ -162,17 +162,17 @@ describe('Directive v-for', () => {
     vm.obj.a = 3
     waitForUpdate(() => {
       expect(vm.$el.innerHTML).toBe('<span>3-a</span><span>1-b</span><span>2-c</span>')
-      Vue.set(vm.obj, 'd', 4)
+      Blu.set(vm.obj, 'd', 4)
     }).then(() => {
       expect(vm.$el.innerHTML).toBe('<span>3-a</span><span>1-b</span><span>2-c</span><span>4-d</span>')
-      Vue.delete(vm.obj, 'a')
+      Blu.delete(vm.obj, 'a')
     }).then(() => {
       expect(vm.$el.innerHTML).toBe('<span>1-b</span><span>2-c</span><span>4-d</span>')
     }).then(done)
   })
 
   it('should render an Object with key and index', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: `
         <div>
           <span v-for="(val, key, i) in obj">{{val}}-{{key}}-{{i}}</span>
@@ -186,17 +186,17 @@ describe('Directive v-for', () => {
     vm.obj.a = 3
     waitForUpdate(() => {
       expect(vm.$el.innerHTML).toBe('<span>3-a-0</span><span>1-b-1</span><span>2-c-2</span>')
-      Vue.set(vm.obj, 'd', 4)
+      Blu.set(vm.obj, 'd', 4)
     }).then(() => {
       expect(vm.$el.innerHTML).toBe('<span>3-a-0</span><span>1-b-1</span><span>2-c-2</span><span>4-d-3</span>')
-      Vue.delete(vm.obj, 'a')
+      Blu.delete(vm.obj, 'a')
     }).then(() => {
       expect(vm.$el.innerHTML).toBe('<span>1-b-0</span><span>2-c-1</span><span>4-d-2</span>')
     }).then(done)
   })
 
   it('should render each key of data', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: `
         <div>
           <span v-for="(val, key) in $data">{{val}}-{{key}}</span>
@@ -212,7 +212,7 @@ describe('Directive v-for', () => {
   })
 
   it('check priorities: v-if before v-for', function () {
-    const vm = new Vue({
+    const vm = new Blu({
       data: {
         items: [1, 2, 3]
       },
@@ -222,7 +222,7 @@ describe('Directive v-for', () => {
   })
 
   it('check priorities: v-if after v-for', function () {
-    const vm = new Vue({
+    const vm = new Blu({
       data: {
         items: [1, 2, 3]
       },
@@ -232,14 +232,14 @@ describe('Directive v-for', () => {
   })
 
   it('range v-for', () => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: '<div><div v-for="n in 3">{{n}}</div></div>'
     }).$mount()
     expect(vm.$el.textContent).toBe('123')
   })
 
   it('without key', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       data: {
         items: [
           { id: 1, msg: 'a' },
@@ -260,7 +260,7 @@ describe('Directive v-for', () => {
   })
 
   it('with key', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       data: {
         items: [
           { id: 1, msg: 'a' },
@@ -282,7 +282,7 @@ describe('Directive v-for', () => {
   })
 
   it('nested loops', () => {
-    const vm = new Vue({
+    const vm = new Blu({
       data: {
         items: [
           { items: [{ a: 1 }, { a: 2 }], a: 1 },
@@ -303,7 +303,7 @@ describe('Directive v-for', () => {
   })
 
   it('template v-for', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       data: {
         list: [
           { a: 1 },
@@ -338,7 +338,7 @@ describe('Directive v-for', () => {
   })
 
   it('component v-for', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       data: {
         list: [
           { a: 1 },
@@ -378,7 +378,7 @@ describe('Directive v-for', () => {
   })
 
   it('dynamic component v-for', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       data: {
         list: [
           { type: 'one' },
@@ -406,7 +406,7 @@ describe('Directive v-for', () => {
   })
 
   it('multi nested array reactivity', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       data: {
         list: [[['foo']]]
       },

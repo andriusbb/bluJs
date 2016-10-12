@@ -1,8 +1,8 @@
-import Vue from 'vue'
+import Blu from 'blu'
 
 describe('Options _scopeId', () => {
   it('should add scopeId attributes', () => {
-    const vm = new Vue({
+    const vm = new Blu({
       _scopeId: 'foo',
       template: '<div><p><span></span></p></div>'
     }).$mount()
@@ -12,7 +12,7 @@ describe('Options _scopeId', () => {
   })
 
   it('should add scopedId attributes from both parent and child on child root', () => {
-    const vm = new Vue({
+    const vm = new Blu({
       _scopeId: 'foo',
       template: '<div><child></child></div>',
       components: {
@@ -27,7 +27,7 @@ describe('Options _scopeId', () => {
   })
 
   it('should add scopedId attributes from both parent and child on slot contents', () => {
-    const vm = new Vue({
+    const vm = new Blu({
       _scopeId: 'foo',
       template: '<div><child><p>hi</p></child></div>',
       components: {

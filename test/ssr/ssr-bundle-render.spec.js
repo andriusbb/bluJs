@@ -1,7 +1,7 @@
 import path from 'path'
 import webpack from 'webpack'
 import MemoeryFS from 'memory-fs'
-import { createBundleRenderer } from '../../packages/vue-server-renderer'
+import { createBundleRenderer } from '../../packages/blu-server-renderer'
 
 const rendererCache = {}
 function createRenderer (file, cb, options) {

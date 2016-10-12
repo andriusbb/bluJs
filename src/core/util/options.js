@@ -1,6 +1,6 @@
 /* @flow */
 
-import Vue from '../instance/index'
+import Blu from '../instance/index'
 import config from '../config'
 import { warn } from './debug'
 import { set } from '../observer/index'
@@ -62,7 +62,7 @@ strats.data = function (
   vm?: Component
 ): ?Function {
   if (!vm) {
-    // in a Vue.extend merge, both should be functions
+    // in a Blu.extend merge, both should be functions
     if (!childVal) {
       return parentVal
     }
@@ -212,7 +212,7 @@ function normalizeComponents (options: Object) {
       }
       def = components[key]
       if (isPlainObject(def)) {
-        components[key] = Vue.extend(def)
+        components[key] = Blu.extend(def)
       }
     }
   }
@@ -286,7 +286,7 @@ export function mergeOptions (
   if (child.mixins) {
     for (let i = 0, l = child.mixins.length; i < l; i++) {
       let mixin = child.mixins[i]
-      if (mixin.prototype instanceof Vue) {
+      if (mixin.prototype instanceof Blu) {
         mixin = mixin.options
       }
       parent = mergeOptions(parent, mixin, vm)

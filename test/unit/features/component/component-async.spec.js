@@ -1,9 +1,9 @@
-import Vue from 'vue'
+import Blu from 'blu'
 import { Promise } from 'es6-promise'
 
 describe('Component async', () => {
   it('normal', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: '<div><test></test></div>',
       components: {
         test: (resolve) => {
@@ -12,7 +12,7 @@ describe('Component async', () => {
               template: '<div>hi</div>'
             })
             // wait for parent update
-            Vue.nextTick(next)
+            Blu.nextTick(next)
           }, 0)
         }
       }
@@ -27,7 +27,7 @@ describe('Component async', () => {
   })
 
   it('as root', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: '<test></test>',
       components: {
         test: resolve => {
@@ -36,7 +36,7 @@ describe('Component async', () => {
               template: '<div>hi</div>'
             })
             // wait for parent update
-            Vue.nextTick(next)
+            Blu.nextTick(next)
           }, 0)
         }
       }
@@ -52,7 +52,7 @@ describe('Component async', () => {
   })
 
   it('dynamic', done => {
-    var vm = new Vue({
+    var vm = new Blu({
       template: '<component :is="view"></component>',
       data: {
         view: 'view-a'
@@ -63,7 +63,7 @@ describe('Component async', () => {
             resolve({
               template: '<div>A</div>'
             })
-            Vue.nextTick(step1)
+            Blu.nextTick(step1)
           }, 0)
         },
         'view-b': resolve => {
@@ -71,7 +71,7 @@ describe('Component async', () => {
             resolve({
               template: '<p>B</p>'
             })
-            Vue.nextTick(step2)
+            Blu.nextTick(step2)
           }, 0)
         }
       }
@@ -97,7 +97,7 @@ describe('Component async', () => {
   })
 
   it('warn reject', () => {
-    new Vue({
+    new Blu({
       template: '<test></test>',
       components: {
         test: (resolve, reject) => {
@@ -109,7 +109,7 @@ describe('Component async', () => {
   })
 
   it('with v-for', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: '<div><test v-for="n in list" :n="n"></test></div>',
       data: {
         list: [1, 2, 3]
@@ -121,7 +121,7 @@ describe('Component async', () => {
               props: ['n'],
               template: '<div>{{n}}</div>'
             })
-            Vue.nextTick(next)
+            Blu.nextTick(next)
           }, 0)
         }
       }
@@ -133,7 +133,7 @@ describe('Component async', () => {
   })
 
   it('returning Promise', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: '<div><test></test></div>',
       components: {
         test: () => {
@@ -144,7 +144,7 @@ describe('Component async', () => {
               })
               // wait for promise resolve and then parent update
               Promise.resolve().then(() => {
-                Vue.nextTick(next)
+                Blu.nextTick(next)
               })
             }, 0)
           })

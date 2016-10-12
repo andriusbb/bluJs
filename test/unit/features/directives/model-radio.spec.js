@@ -1,8 +1,8 @@
-import Vue from 'vue'
+import Blu from 'blu'
 
 describe('Directive v-model radio', () => {
   it('should work', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       data: {
         test: '1'
       },
@@ -30,7 +30,7 @@ describe('Directive v-model radio', () => {
   })
 
   it('should respect value bindings', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       data: {
         test: 1
       },
@@ -58,7 +58,7 @@ describe('Directive v-model radio', () => {
   })
 
   it('should respect value bindings (object loose equal)', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       data: {
         test: { a: 1 }
       },
@@ -86,7 +86,7 @@ describe('Directive v-model radio', () => {
   })
 
   it('warn inline checked', () => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: `<input v-model="test" type="radio" value="1" checked>`,
       data: {
         test: '2'

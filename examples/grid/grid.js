@@ -1,5 +1,5 @@
 // register the grid component
-Vue.component('demo-grid', {
+Blu.component('demo-grid', {
   template: '#grid-template',
   replace: true,
   props: {
@@ -54,7 +54,7 @@ Vue.component('demo-grid', {
 })
 
 // bootstrap the demo
-var demo = new Vue({
+var demo = new Blu({
   el: '#demo',
   data: {
     searchQuery: '',

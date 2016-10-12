@@ -1,8 +1,8 @@
-import Vue from 'vue'
+import Blu from 'blu'
 
 describe('Directive v-text', () => {
   it('should render text', () => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: '<div v-text="a"></div>',
       data: { a: 'hello' }
     }).$mount()
@@ -10,7 +10,7 @@ describe('Directive v-text', () => {
   })
 
   it('should encode html entities', () => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: '<div v-text="a"></div>',
       data: { a: '<foo>' }
     }).$mount()
@@ -18,7 +18,7 @@ describe('Directive v-text', () => {
   })
 
   it('should support all value types', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: '<div v-text="a"></div>',
       data: { a: false }
     }).$mount()

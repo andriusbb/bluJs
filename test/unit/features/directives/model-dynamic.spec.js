@@ -1,8 +1,8 @@
-import Vue from 'vue'
+import Blu from 'blu'
 
 describe('Directive v-model dynamic input type', () => {
   it('should warn', function () {
-    new Vue({
+    new Blu({
       data: {
         type: 'text',
         text: 'hi'

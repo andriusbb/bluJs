@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import Blu from 'blu'
 import injectStyles from './inject-styles'
 import { isIE9 } from 'core/util/env'
 import { nextFrame } from 'web/runtime/transition-util'
@@ -14,7 +14,7 @@ if (!isIE9) {
     })
 
     function createBasicVM (useIs, appear) {
-      const vm = new Vue({
+      const vm = new Blu({
         template: `
           <div>
             ${useIs ? `<span is="transition-group">` : `<transition-group${appear ? ` appear` : ``}>`}
@@ -180,7 +180,7 @@ if (!isIE9) {
       const beforeEnterSpy = jasmine.createSpy()
       const afterEnterSpy = jasmine.createSpy()
       const afterLeaveSpy = jasmine.createSpy()
-      const vm = new Vue({
+      const vm = new Blu({
         template: `
           <div>
             <transition-group @before-enter="beforeEnter" @after-enter="afterEnter" @after-leave="afterLeave">
@@ -244,7 +244,7 @@ if (!isIE9) {
     })
 
     it('move', done => {
-      const vm = new Vue({
+      const vm = new Blu({
         template: `
           <div>
             <transition-group name="group">
@@ -288,7 +288,7 @@ if (!isIE9) {
     })
 
     it('warn unkeyed children', () => {
-      new Vue({
+      new Blu({
         template: `<div><transition-group><div v-for="i in 3"></div></transition-group></div>`
       }).$mount()
       expect('<transition-group> children must be keyed: <div>').toHaveBeenWarned()

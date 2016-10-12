@@ -24,12 +24,12 @@ export function initRender (vm: Component) {
   }
 }
 
-export function renderMixin (Vue: Class<Component>) {
-  Vue.prototype.$nextTick = function (fn: Function) {
+export function renderMixin (Blu: Class<Component>) {
+  Blu.prototype.$nextTick = function (fn: Function) {
     nextTick(fn, this)
   }
 
-  Vue.prototype._render = function (): VNode {
+  Blu.prototype._render = function (): VNode {
     const vm: Component = this
     const {
       render,
@@ -88,20 +88,20 @@ export function renderMixin (Vue: Class<Component>) {
   }
 
   // shorthands used in render functions
-  Vue.prototype._h = createElement
+  Blu.prototype._h = createElement
   // toString for mustaches
-  Vue.prototype._s = _toString
+  Blu.prototype._s = _toString
   // number conversion
-  Vue.prototype._n = toNumber
+  Blu.prototype._n = toNumber
   // empty vnode
-  Vue.prototype._e = emptyVNode
+  Blu.prototype._e = emptyVNode
   // loose equal
-  Vue.prototype._q = looseEqual
+  Blu.prototype._q = looseEqual
   // loose indexOf
-  Vue.prototype._i = looseIndexOf
+  Blu.prototype._i = looseIndexOf
 
   // render static tree by index
-  Vue.prototype._m = function renderStatic (
+  Blu.prototype._m = function renderStatic (
     index: number,
     isInFor?: boolean
   ): VNode | Array<VNode> {
@@ -131,12 +131,12 @@ export function renderMixin (Vue: Class<Component>) {
 
   // filter resolution helper
   const identity = _ => _
-  Vue.prototype._f = function resolveFilter (id) {
+  Blu.prototype._f = function resolveFilter (id) {
     return resolveAsset(this.$options, 'filters', id, true) || identity
   }
 
   // render v-for
-  Vue.prototype._l = function renderList (
+  Blu.prototype._l = function renderList (
     val: any,
     render: () => VNode
   ): ?Array<VNode> {
@@ -163,7 +163,7 @@ export function renderMixin (Vue: Class<Component>) {
   }
 
   // renderSlot
-  Vue.prototype._t = function (
+  Blu.prototype._t = function (
     name: string,
     fallback: ?Array<VNode>
   ): ?Array<VNode> {
@@ -181,7 +181,7 @@ export function renderMixin (Vue: Class<Component>) {
   }
 
   // apply v-bind object
-  Vue.prototype._b = function bindProps (
+  Blu.prototype._b = function bindProps (
     data: any,
     value: any,
     asProp?: boolean
@@ -212,7 +212,7 @@ export function renderMixin (Vue: Class<Component>) {
   }
 
   // expose v-on keyCodes
-  Vue.prototype._k = function getKeyCodes (key: string): any {
+  Blu.prototype._k = function getKeyCodes (key: string): any {
     return config.keyCodes[key]
   }
 }

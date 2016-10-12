@@ -1,18 +1,18 @@
-import Vue from 'vue'
+import Blu from 'blu'
 
 describe('Global API: mixin', () => {
   let options
-  beforeEach(() => { options = Vue.options })
-  afterEach(() => { Vue.options = options })
+  beforeEach(() => { options = Blu.options })
+  afterEach(() => { Blu.options = options })
 
   it('should work', () => {
     const spy = jasmine.createSpy('global mixin')
-    Vue.mixin({
+    Blu.mixin({
       created () {
         spy(this.$options.myOption)
       }
     })
-    new Vue({
+    new Blu({
       myOption: 'hello'
     })
     expect(spy).toHaveBeenCalledWith('hello')
@@ -20,13 +20,13 @@ describe('Global API: mixin', () => {
 
   it('should work for constructors created before mixin is applied', () => {
     const calls = []
-    const Test = Vue.extend({
+    const Test = Blu.extend({
       name: 'test',
       beforeCreate () {
         calls.push(this.$options.myOption + ' local')
       }
     })
-    Vue.mixin({
+    Blu.mixin({
       beforeCreate () {
         calls.push(this.$options.myOption + ' global')
       }

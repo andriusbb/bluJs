@@ -1,4 +1,4 @@
-# Vue.js SSR benchmark
+# Blu.js SSR benchmark
 
 This benchmark renders a table of 1000 rows with 10 columns (10k components), with around 30k normal elements on the page. Note this is not something likely to be seen in a typical app. This benchmark is mostly for stress/regression testing and comparing between `renderToString` and `renderToStream`.
 

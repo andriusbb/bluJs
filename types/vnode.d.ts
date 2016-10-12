@@ -1,4 +1,4 @@
-import { Vue } from "./vue";
+import { Blu } from "./blu";
 
 export type VNodeChildren = VNodeChildrenArrayContents | string;
 export interface VNodeChildrenArrayContents {
@@ -12,10 +12,10 @@ export interface VNode {
   text?: string;
   elm?: Node;
   ns?: string;
-  context?: Vue;
+  context?: Blu;
   key?: string | number;
   componentOptions?: VNodeComponentOptions;
-  child?: Vue;
+  child?: Blu;
   parent?: VNode;
   raw?: boolean;
   isStatic?: boolean;
@@ -24,7 +24,7 @@ export interface VNode {
 }
 
 export interface VNodeComponentOptions {
-  Ctor: Vue;
+  Ctor: Blu;
   propsData?: Object;
   listeners?: Object;
   children?: VNodeChildren;

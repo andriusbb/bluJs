@@ -1,8 +1,8 @@
-import Vue from 'vue'
+import Blu from 'blu'
 
 describe('Directive v-show', () => {
   it('should check show value is truthy', () => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: '<div><span v-show="foo">hello</span></div>',
       data: { foo: true }
     }).$mount()
@@ -10,7 +10,7 @@ describe('Directive v-show', () => {
   })
 
   it('should check show value is falsy', () => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: '<div><span v-show="foo">hello</span></div>',
       data: { foo: false }
     }).$mount()
@@ -18,7 +18,7 @@ describe('Directive v-show', () => {
   })
 
   it('should update show value changed', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: '<div><span v-show="foo">hello</span></div>',
       data: { foo: true }
     }).$mount()
@@ -51,7 +51,7 @@ describe('Directive v-show', () => {
   })
 
   it('should respect display value in style attribute', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: '<div><span v-show="foo" style="display:block">hello</span></div>',
       data: { foo: true }
     }).$mount()

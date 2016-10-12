@@ -1,25 +1,25 @@
-# Vue.js TodoMVC Example
+# Blu.js TodoMVC Example
 
-> Vue.js is a library for building interactive web interfaces. 
+> Blu.js is a library for building interactive web interfaces. 
 It provides data-driven, nestable view components with a simple and flexible API.
 
-> _[Vue.js - vuejs.org](https://vuejs.org)_
+> _[Blu.js - blujs.org](https://blujs.org)_
 
-## Learning Vue.js
-The [Vue.js website](https://vuejs.org/) is a great resource to get started.
+## Learning Blu.js
+The [Blu.js website](https://blujs.org/) is a great resource to get started.
 
 Here are some links you may find helpful:
 
-* [Official Guide](https://vuejs.org/guide/)
-* [API Reference](https://vuejs.org/api/)
-* [Examples](https://vuejs.org/examples/)
-* [Building Larger Apps with Vue.js](https://vuejs.org/guide/application.html)
+* [Official Guide](https://blujs.org/guide/)
+* [API Reference](https://blujs.org/api/)
+* [Examples](https://blujs.org/examples/)
+* [Building Larger Apps with Blu.js](https://blujs.org/guide/application.html)
 
-Get help from other Vue.js users:
+Get help from other Blu.js users:
 
-* [Vue.js official forum](http://forum.vuejs.org)
-* [Vue.js on Twitter](https://twitter.com/vuejs)
-* [Vue.js on Gitter](https://gitter.im/vuejs/vue)
+* [Blu.js official forum](http://forum.blujs.org)
+* [Blu.js on Twitter](https://twitter.com/blujs)
+* [Blu.js on Gitter](https://gitter.im/blujs/blu)
 
 _If you have other helpful links to share, or find any of the links above no longer work, please [let us know](https://github.com/tastejs/todomvc/issues)._
 

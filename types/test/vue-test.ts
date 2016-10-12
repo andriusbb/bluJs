@@ -1,6 +1,6 @@
-import Vue = require("../index");
+import Blu = require("../index");
 
-class Test extends Vue {
+class Test extends Blu {
   testProperties() {
     this.$data;
     this.$el;
@@ -15,15 +15,15 @@ class Test extends Vue {
 
   // test property reification
   $refs: {
-    vue: Vue,
+    blu: Blu,
     element: HTMLInputElement,
-    vues: Vue[],
+    blus: Blu[],
     elements: HTMLInputElement[]
   }
   testReification() {
-    this.$refs.vue.$data;
+    this.$refs.blu.$data;
     this.$refs.element.value;
-    this.$refs.vues[0].$data;
+    this.$refs.blus[0].$data;
     this.$refs.elements[0].value;
   }
 

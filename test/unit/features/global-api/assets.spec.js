@@ -1,7 +1,7 @@
-import Vue from 'vue'
+import Blu from 'blu'
 
 describe('Global API: assets', () => {
-  const Test = Vue.extend()
+  const Test = Blu.extend()
 
   it('directive / filters', () => {
     const assets = ['directive', 'filter']
@@ -11,25 +11,25 @@ describe('Global API: assets', () => {
       expect(Test.options[type + 's'].test).toBe(def)
       expect(Test[type]('test')).toBe(def)
       // extended registration should not pollute global
-      expect(Vue.options[type + 's'].test).toBeUndefined()
+      expect(Blu.options[type + 's'].test).toBeUndefined()
     })
   })
 
-  describe('Vue.component', () => {
+  describe('Blu.component', () => {
     it('should register a component', () => {
-      Vue.component('foo', {
+      Blu.component('foo', {
         template: '<span>foo</span>'
       })
-      Vue.component('bar', {
+      Blu.component('bar', {
         template: '<span>bar</span>'
       })
-      const vm = new Vue({
+      const vm = new Blu({
         template: '<div><foo></foo><bar></bar></div>'
       }).$mount()
       expect(vm.$el.innerHTML).toBe('<span>foo</span><span>bar</span>')
       // unregister them
-      delete Vue.options.components.foo
-      delete Vue.options.components.bar
+      delete Blu.options.components.foo
+      delete Blu.options.components.bar
     })
   })
 
@@ -38,7 +38,7 @@ describe('Global API: assets', () => {
     Test.component('test', def)
     const component = Test.options.components.test
     expect(typeof component).toBe('function')
-    expect(component.super).toBe(Vue)
+    expect(component.super).toBe(Blu)
     expect(component.options.a).toBe(1)
     expect(component.options.name).toBe('test')
     expect(Test.component('test')).toBe(component)
@@ -46,6 +46,6 @@ describe('Global API: assets', () => {
     Test.component('test2', component)
     expect(Test.component('test2')).toBe(component)
     // extended registration should not pollute global
-    expect(Vue.options.components.test).toBeUndefined()
+    expect(Blu.options.components.test).toBeUndefined()
   })
 })

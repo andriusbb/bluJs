@@ -1,8 +1,8 @@
-import Vue from 'vue'
+import Blu from 'blu'
 
 describe('Directive v-bind', () => {
   it('normal attr', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: '<div><span :test="foo">hello</span></div>',
       data: { foo: 'ok' }
     }).$mount()
@@ -26,7 +26,7 @@ describe('Directive v-bind', () => {
   })
 
   it('should set property for input value', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: `
         <div>
           <input type="text" :value="foo">
@@ -47,7 +47,7 @@ describe('Directive v-bind', () => {
   })
 
   it('xlink', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: '<svg><a :xlink:special="foo"></a></svg>',
       data: {
         foo: 'ok'
@@ -68,7 +68,7 @@ describe('Directive v-bind', () => {
   })
 
   it('enumrated attr', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: '<div><span :draggable="foo">hello</span></div>',
       data: { foo: true }
     }).$mount()
@@ -92,7 +92,7 @@ describe('Directive v-bind', () => {
   })
 
   it('boolean attr', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: '<div><span :disabled="foo">hello</span></div>',
       data: { foo: true }
     }).$mount()
@@ -110,7 +110,7 @@ describe('Directive v-bind', () => {
   })
 
   it('bind as prop', () => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: '<div><span v-bind:text-content.prop="foo"></span><span :inner-html.prop="bar"></span></div>',
       data: {
         foo: 'hello',
@@ -122,7 +122,7 @@ describe('Directive v-bind', () => {
   })
 
   it('bind object', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: '<input v-bind="test">',
       data: {
         test: {
@@ -145,7 +145,7 @@ describe('Directive v-bind', () => {
   })
 
   it('bind object with class/style', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: '<input class="a" style="color:red" v-bind="test">',
       data: {
         test: {
@@ -171,7 +171,7 @@ describe('Directive v-bind', () => {
   })
 
   it('bind object as prop', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: '<input v-bind.prop="test">',
       data: {
         test: {
@@ -195,7 +195,7 @@ describe('Directive v-bind', () => {
   })
 
   it('bind array', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: '<input v-bind="test">',
       data: {
         test: [
@@ -217,7 +217,7 @@ describe('Directive v-bind', () => {
   })
 
   it('warn expect object', () => {
-    new Vue({
+    new Blu({
       template: '<input v-bind="test">',
       data: {
         test: 1
@@ -229,7 +229,7 @@ describe('Directive v-bind', () => {
   // a vdom patch edge case where the user has several un-keyed elements of the
   // same tag next to each other, and toggling them.
   it('properly update for toggling un-keyed children', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: `
         <div>
           <div v-if="ok" id="a" data-test="1"></div>

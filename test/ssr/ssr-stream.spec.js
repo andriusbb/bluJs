@@ -1,10 +1,10 @@
-import Vue from '../../dist/vue.common.js'
-import { createRenderer } from '../../packages/vue-server-renderer'
+import Blu from '../../dist/blu.common.js'
+import { createRenderer } from '../../packages/blu-server-renderer'
 const { renderToStream } = createRenderer()
 
 describe('SSR: renderToStream', () => {
   it('should render to a stream', done => {
-    const stream = renderToStream(new Vue({
+    const stream = renderToStream(new Blu({
       template: `
         <div>
           <p class="hi">yoyo</p>
@@ -65,7 +65,7 @@ describe('SSR: renderToStream', () => {
   })
 
   it('should catch error', done => {
-    const stream = renderToStream(new Vue({
+    const stream = renderToStream(new Blu({
       render () {
         throw new Error('oops')
       }

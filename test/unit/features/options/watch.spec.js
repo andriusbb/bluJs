@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import Blu from 'blu'
 
 describe('Options watch', () => {
   let spy
@@ -7,7 +7,7 @@ describe('Options watch', () => {
   })
 
   it('basic usage', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       data: {
         a: 1
       },
@@ -24,7 +24,7 @@ describe('Options watch', () => {
   })
 
   it('string method name', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       data: {
         a: 1
       },
@@ -45,7 +45,7 @@ describe('Options watch', () => {
 
   it('multiple cbs (after option merge)', done => {
     const spy1 = jasmine.createSpy('watch')
-    const Test = Vue.extend({
+    const Test = Blu.extend({
       watch: {
         a: spy1
       }
@@ -64,7 +64,7 @@ describe('Options watch', () => {
   })
 
   it('with option: immediate', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       data: { a: 1 },
       watch: {
         a: {
@@ -81,7 +81,7 @@ describe('Options watch', () => {
   })
 
   it('with option: deep', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       data: { a: { b: 1 }},
       watch: {
         a: {

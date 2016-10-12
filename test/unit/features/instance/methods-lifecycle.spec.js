@@ -1,9 +1,9 @@
-import Vue from 'vue'
+import Blu from 'blu'
 
 describe('Instance methods lifecycle', () => {
   describe('$mount', () => {
     it('empty mount', () => {
-      const vm = new Vue({
+      const vm = new Blu({
         data: { msg: 'hi' },
         template: '<div>{{ msg }}</div>'
       }).$mount()
@@ -14,7 +14,7 @@ describe('Instance methods lifecycle', () => {
     it('mount to existing element', () => {
       const el = document.createElement('div')
       el.innerHTML = '{{ msg }}'
-      const vm = new Vue({
+      const vm = new Blu({
         data: { msg: 'hi' }
       }).$mount(el)
       expect(vm.$el.tagName).toBe('DIV')
@@ -26,7 +26,7 @@ describe('Instance methods lifecycle', () => {
       el.id = 'mount-test'
       el.innerHTML = '{{ msg }}'
       document.body.appendChild(el)
-      const vm = new Vue({
+      const vm = new Blu({
         data: { msg: 'hi' }
       }).$mount('#mount-test')
       expect(vm.$el.tagName).toBe('DIV')
@@ -36,7 +36,7 @@ describe('Instance methods lifecycle', () => {
 
   describe('$destroy', () => {
     it('remove self from parent', () => {
-      const vm = new Vue({
+      const vm = new Blu({
         template: '<test></test>',
         components: {
           test: { template: '<div></div>' }
@@ -47,7 +47,7 @@ describe('Instance methods lifecycle', () => {
     })
 
     it('teardown watchers', () => {
-      const vm = new Vue({
+      const vm = new Blu({
         data: { a: 123 },
         template: '<div></div>'
       }).$mount()
@@ -58,14 +58,14 @@ describe('Instance methods lifecycle', () => {
     })
 
     it('remove self from data observer', () => {
-      const vm = new Vue({ data: { a: 1 }})
+      const vm = new Blu({ data: { a: 1 }})
       vm.$destroy()
       expect(vm.$data.__ob__.vmCount).toBe(0)
     })
 
     it('avoid duplicate calls', () => {
       const spy = jasmine.createSpy('destroy')
-      const vm = new Vue({
+      const vm = new Blu({
         beforeDestroy: spy
       })
       vm.$destroy()
@@ -76,7 +76,7 @@ describe('Instance methods lifecycle', () => {
 
   describe('$forceUpdate', () => {
     it('should force update', done => {
-      const vm = new Vue({
+      const vm = new Blu({
         data: {
           a: {}
         },
@@ -96,7 +96,7 @@ describe('Instance methods lifecycle', () => {
 
   describe('$nextTick', () => {
     it('should be called after DOM update in correct context', done => {
-      const vm = new Vue({
+      const vm = new Blu({
         template: '<div>{{ msg }}</div>',
         data: {
           msg: 'foo'

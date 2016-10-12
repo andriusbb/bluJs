@@ -1,8 +1,8 @@
-import Vue from 'vue'
+import Blu from 'blu'
 
 describe('Filters', () => {
   it('basic usage', () => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: '<div>{{ msg | upper }}</div>',
       data: {
         msg: 'hi'
@@ -15,7 +15,7 @@ describe('Filters', () => {
   })
 
   it('chained usage', () => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: '<div>{{ msg | upper | reverse }}</div>',
       data: {
         msg: 'hi'
@@ -29,7 +29,7 @@ describe('Filters', () => {
   })
 
   it('arguments', () => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: `<div>{{ msg | add(a, 3) }}</div>`,
       data: {
         msg: 1,
@@ -43,7 +43,7 @@ describe('Filters', () => {
   })
 
   it('quotes', () => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: `<div>{{ msg + "b | c" + 'd' | upper }}</div>`,
       data: {
         msg: 'a'
@@ -56,7 +56,7 @@ describe('Filters', () => {
   })
 
   it('double pipe', () => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: `<div>{{ b || msg | upper }}</div>`,
       data: {
         b: false,
@@ -70,7 +70,7 @@ describe('Filters', () => {
   })
 
   it('object literal', () => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: `<div>{{ { a: 123 } | pick('a') }}</div>`,
       filters: {
         pick: (v, key) => v[key]
@@ -80,7 +80,7 @@ describe('Filters', () => {
   })
 
   it('array literal', () => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: `<div>{{ [1, 2, 3] | reverse }}</div>`,
       filters: {
         reverse: arr => arr.reverse().join(',')
@@ -90,7 +90,7 @@ describe('Filters', () => {
   })
 
   it('warn non-existent', () => {
-    new Vue({
+    new Blu({
       template: '<div>{{ msg | upper }}</div>',
       data: { msg: 'foo' }
     }).$mount()

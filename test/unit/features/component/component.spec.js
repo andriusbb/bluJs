@@ -1,8 +1,8 @@
-import Vue from 'vue'
+import Blu from 'blu'
 
 describe('Component', () => {
   it('static', () => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: '<test></test>',
       components: {
         test: {
@@ -18,7 +18,7 @@ describe('Component', () => {
   })
 
   it('using component in restricted elements', () => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: '<div><table><tbody><test></test></tbody></table></div>',
       components: {
         test: {
@@ -33,7 +33,7 @@ describe('Component', () => {
   })
 
   it('"is" attribute', () => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: '<div><table><tbody><tr is="test"></tr></tbody></table></div>',
       components: {
         test: {
@@ -48,7 +48,7 @@ describe('Component', () => {
   })
 
   it('inline-template', () => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: '<div><test inline-template><span>{{a}}</span></test></div>',
       data: {
         a: 'parent'
@@ -65,7 +65,7 @@ describe('Component', () => {
   })
 
   it('fragment instance warning', () => {
-    new Vue({
+    new Blu({
       template: '<test></test>',
       components: {
         test: {
@@ -80,7 +80,7 @@ describe('Component', () => {
   })
 
   it('dynamic', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: '<component :is="view" :view="view"></component>',
       data: {
         view: 'view-a'
@@ -113,7 +113,7 @@ describe('Component', () => {
   })
 
   it(':is using raw component constructor', () => {
-    const vm = new Vue({
+    const vm = new Blu({
       template:
         '<div>' +
           '<component :is="$options.components.test"></component>' +
@@ -134,7 +134,7 @@ describe('Component', () => {
   })
 
   it('dynamic combined with v-for', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       template:
         '<div>' +
           '<component v-for="c in comps" :is="c.type"></component>' +
@@ -159,7 +159,7 @@ describe('Component', () => {
   })
 
   it('should compile parent template directives & content in parent scope', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       data: {
         ok: false,
         message: 'hello'
@@ -187,7 +187,7 @@ describe('Component', () => {
   })
 
   it('parent content + v-if', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       data: {
         ok: false,
         message: 'hello'
@@ -214,7 +214,7 @@ describe('Component', () => {
   })
 
   it('props', () => {
-    const vm = new Vue({
+    const vm = new Blu({
       data: {
         list: [{ a: 1 }, { a: 2 }]
       },
@@ -231,14 +231,14 @@ describe('Component', () => {
 
   it('not found component should not throw', () => {
     expect(function () {
-      new Vue({
+      new Blu({
         template: '<div is="non-existent"></div>'
       })
     }).not.toThrow()
   })
 
   it('properly update replaced higher-order component root node', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       data: {
         color: 'red'
       },
@@ -279,8 +279,8 @@ describe('Component', () => {
 
   it('catch component render error and preserve previous vnode', done => {
     const spy = jasmine.createSpy()
-    Vue.config.errorHandler = spy
-    const vm = new Vue({
+    Blu.config.errorHandler = spy
+    const vm = new Blu({
       data: {
         a: {
           b: 123
@@ -300,7 +300,7 @@ describe('Component', () => {
       vm.a = { b: 234 }
     }).then(() => {
       expect(vm.$el.textContent).toBe('234') // should be able to recover
-      Vue.config.errorHandler = null
+      Blu.config.errorHandler = null
     }).then(done)
   })
 })

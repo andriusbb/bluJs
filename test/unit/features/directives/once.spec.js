@@ -1,8 +1,8 @@
-import Vue from 'vue'
+import Blu from 'blu'
 
 describe('Directive v-once', () => {
   it('should not rerender component', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: '<div v-once>{{ a }}</div>',
       data: { a: 'hello' }
     }).$mount()
@@ -14,7 +14,7 @@ describe('Directive v-once', () => {
   })
 
   it('should not rerender self and child component', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: `<div v-once>
                   <span>{{ a }}</span>
                   <item :b="a"></item>
@@ -38,7 +38,7 @@ describe('Directive v-once', () => {
   })
 
   it('should rerender parent but not self', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: `<div>
                   <span>{{ a }}</span>
                   <item v-once :b="a"></item>
@@ -62,7 +62,7 @@ describe('Directive v-once', () => {
   })
 
   it('should not rerender static sub nodes', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: `<div>
                   <span v-once>{{ a }}</span>
                   <item :b="a"></item>
@@ -93,7 +93,7 @@ describe('Directive v-once', () => {
   })
 
   it('should work with v-for', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       data: {
         list: [1, 2, 3]
       },

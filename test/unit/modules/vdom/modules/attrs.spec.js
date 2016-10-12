@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import Blu from 'blu'
 import { patch } from 'web/runtime/patch'
 import VNode from 'core/vdom/vnode'
 import { xlinkNS } from 'web/util/index'
@@ -77,7 +77,7 @@ describe('vdom attrs module', () => {
   })
 
   it('should handle mutating observed attrs object', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       data: {
         attrs: {
           id: 'foo'

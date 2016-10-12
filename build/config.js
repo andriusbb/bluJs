@@ -7,7 +7,7 @@ const version = process.env.VERSION || require('../package.json').version
 
 const banner =
   '/*!\n' +
-  ' * Vue.js v' + version + '\n' +
+  ' * Blu.js v' + version + '\n' +
   ' * (c) 2014-' + new Date().getFullYear() + ' Evan You\n' +
   ' * Released under the MIT License.\n' +
   ' */'
@@ -18,14 +18,14 @@ const builds = {
   // Runtime only (CommonJS). Used by bundlers e.g. Webpack & Browserify
   'web-runtime-dev': {
     entry: path.resolve(__dirname, '../src/entries/web-runtime.js'),
-    dest: path.resolve(__dirname, '../dist/vue.common.js'),
+    dest: path.resolve(__dirname, '../dist/blu.common.js'),
     format: 'cjs',
     banner
   },
   // Minified runtime, only for filze size monitoring
   'web-runtime-prod': {
     entry: path.resolve(__dirname, '../src/entries/web-runtime.js'),
-    dest: path.resolve(__dirname, '../dist/vue.common.min.js'),
+    dest: path.resolve(__dirname, '../dist/blu.common.min.js'),
     format: 'umd',
     env: 'production',
     banner
@@ -33,7 +33,7 @@ const builds = {
   // Runtime+compiler standalone developement build.
   'web-standalone-dev': {
     entry: path.resolve(__dirname, '../src/entries/web-runtime-with-compiler.js'),
-    dest: path.resolve(__dirname, '../dist/vue.js'),
+    dest: path.resolve(__dirname, '../dist/blu.js'),
     format: 'umd',
     env: 'development',
     banner,
@@ -44,7 +44,7 @@ const builds = {
   // Runtime+compiler standalone production build.
   'web-standalone-prod': {
     entry: path.resolve(__dirname, '../src/entries/web-runtime-with-compiler.js'),
-    dest: path.resolve(__dirname, '../dist/vue.min.js'),
+    dest: path.resolve(__dirname, '../dist/blu.min.js'),
     format: 'umd',
     env: 'production',
     banner,
@@ -55,14 +55,14 @@ const builds = {
   // Web compiler (CommonJS).
   'web-compiler': {
     entry: path.resolve(__dirname, '../src/entries/web-compiler.js'),
-    dest: path.resolve(__dirname, '../packages/vue-template-compiler/build.js'),
+    dest: path.resolve(__dirname, '../packages/blu-template-compiler/build.js'),
     format: 'cjs',
     external: ['entities', 'de-indent']
   },
   // Web server renderer (CommonJS).
   'web-server-renderer': {
     entry: path.resolve(__dirname, '../src/entries/web-server-renderer.js'),
-    dest: path.resolve(__dirname, '../packages/vue-server-renderer/build.js'),
+    dest: path.resolve(__dirname, '../packages/blu-server-renderer/build.js'),
     format: 'cjs',
     external: ['stream', 'module', 'vm', 'entities', 'de-indent']
   }
@@ -75,7 +75,7 @@ function genConfig (opts) {
     external: opts.external,
     format: opts.format,
     banner: opts.banner,
-    moduleName: 'Vue',
+    moduleName: 'Blu',
     plugins: [
       flow(),
       buble(),

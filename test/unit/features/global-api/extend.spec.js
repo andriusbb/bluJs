@@ -1,15 +1,15 @@
-import Vue from 'vue'
+import Blu from 'blu'
 
 describe('Global API: extend', () => {
   it('should correctly merge options', () => {
-    const Test = Vue.extend({
+    const Test = Blu.extend({
       name: 'test',
       a: 1,
       b: 2
     })
     expect(Test.options.a).toBe(1)
     expect(Test.options.b).toBe(2)
-    expect(Test.super).toBe(Vue)
+    expect(Test.super).toBe(Blu)
     const t = new Test({
       a: 2
     })
@@ -29,22 +29,22 @@ describe('Global API: extend', () => {
   })
 
   it('should warn invalid names', () => {
-    Vue.extend({ name: '123' })
+    Blu.extend({ name: '123' })
     expect('Invalid component name: "123"').toHaveBeenWarned()
-    Vue.extend({ name: '_fesf' })
+    Blu.extend({ name: '_fesf' })
     expect('Invalid component name: "_fesf"').toHaveBeenWarned()
-    Vue.extend({ name: 'Some App' })
+    Blu.extend({ name: 'Some App' })
     expect('Invalid component name: "Some App"').toHaveBeenWarned()
   })
 
   it('should work when used as components', () => {
-    const foo = Vue.extend({
+    const foo = Blu.extend({
       template: '<span>foo</span>'
     })
-    const bar = Vue.extend({
+    const bar = Blu.extend({
       template: '<span>bar</span>'
     })
-    const vm = new Vue({
+    const vm = new Blu({
       template: '<div><foo></foo><bar></bar></div>',
       components: { foo, bar }
     }).$mount()
@@ -53,7 +53,7 @@ describe('Global API: extend', () => {
 
   it('should merge lifecycle hooks', () => {
     const calls = []
-    const A = Vue.extend({
+    const A = Blu.extend({
       created () {
         calls.push(1)
       }
@@ -72,7 +72,7 @@ describe('Global API: extend', () => {
   })
 
   it('should merge methods', () => {
-    const A = Vue.extend({
+    const A = Blu.extend({
       methods: {
         a () { return this.n }
       }
@@ -94,7 +94,7 @@ describe('Global API: extend', () => {
   })
 
   it('should merge assets', () => {
-    const A = Vue.extend({
+    const A = Blu.extend({
       components: {
         aa: {
           template: '<div>A</div>'
@@ -118,8 +118,8 @@ describe('Global API: extend', () => {
     const options = {
       template: '<div></div>'
     }
-    const A = Vue.extend(options)
-    const B = Vue.extend(options)
+    const A = Blu.extend(options)
+    const B = Blu.extend(options)
     expect(A).toBe(B)
   })
 })

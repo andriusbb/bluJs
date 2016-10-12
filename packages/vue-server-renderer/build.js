@@ -577,7 +577,7 @@ if (process.env.NODE_ENV !== 'production') {
 
   warn = function (msg, vm$$1) {
     if (hasConsole && (!config.silent)) {
-      console.error("[Vue warn]: " + msg + " " + (
+      console.error("[Blu warn]: " + msg + " " + (
         vm$$1 ? formatLocation(formatComponentName(vm$$1)) : ''
       ));
     }
@@ -587,12 +587,12 @@ if (process.env.NODE_ENV !== 'production') {
     if (vm$$1.$root === vm$$1) {
       return 'root instance'
     }
-    var name = vm$$1._isVue
+    var name = vm$$1._isBlu
       ? vm$$1.$options.name || vm$$1.$options._componentTag
       : vm$$1.name;
     return (
       (name ? ("component <" + name + ">") : "anonymous component") +
-      (vm$$1._isVue && vm$$1.$options.__file ? (" at " + (vm$$1.$options.__file)) : '')
+      (vm$$1._isBlu && vm$$1.$options.__file ? (" at " + (vm$$1.$options.__file)) : '')
     )
   };
 
@@ -1225,7 +1225,7 @@ function observe (value) {
     !config._isServer &&
     (Array.isArray(value) || isPlainObject(value)) &&
     Object.isExtensible(value) &&
-    !value._isVue
+    !value._isBlu
   ) {
     ob = new Observer(value);
   }
@@ -1303,9 +1303,9 @@ function set (obj, key, val) {
     return
   }
   var ob = obj.__ob__;
-  if (obj._isVue || (ob && ob.vmCount)) {
+  if (obj._isBlu || (ob && ob.vmCount)) {
     process.env.NODE_ENV !== 'production' && warn(
-      'Avoid adding reactive properties to a Vue instance or its root $data ' +
+      'Avoid adding reactive properties to a Blu instance or its root $data ' +
       'at runtime - declare it upfront in the data option.'
     );
     return
@@ -1324,9 +1324,9 @@ function set (obj, key, val) {
  */
 function del (obj, key) {
   var ob = obj.__ob__;
-  if (obj._isVue || (ob && ob.vmCount)) {
+  if (obj._isBlu || (ob && ob.vmCount)) {
     process.env.NODE_ENV !== 'production' && warn(
-      'Avoid deleting properties on a Vue instance or its root $data ' +
+      'Avoid deleting properties on a Blu instance or its root $data ' +
       '- just set it to null.'
     );
     return
@@ -1520,7 +1520,7 @@ function createWatcher (vm$$1, key, handler) {
   vm$$1.$watch(key, handler, options);
 }
 
-function stateMixin (Vue) {
+function stateMixin (Blu) {
   // flow somehow has problems with directly declared definition object
   // when using Object.defineProperty, so we have to procedurally build up
   // the object here.
@@ -1537,12 +1537,12 @@ function stateMixin (Vue) {
       );
     };
   }
-  Object.defineProperty(Vue.prototype, '$data', dataDef);
+  Object.defineProperty(Blu.prototype, '$data', dataDef);
 
-  Vue.prototype.$set = set;
-  Vue.prototype.$delete = del;
+  Blu.prototype.$set = set;
+  Blu.prototype.$delete = del;
 
-  Vue.prototype.$watch = function (
+  Blu.prototype.$watch = function (
     expOrFn,
     cb,
     options
@@ -1802,8 +1802,8 @@ function initLifecycle (vm$$1) {
   vm$$1._isBeingDestroyed = false;
 }
 
-function lifecycleMixin (Vue) {
-  Vue.prototype._mount = function (
+function lifecycleMixin (Blu) {
+  Blu.prototype._mount = function (
     el,
     hydrating
   ) {
@@ -1815,7 +1815,7 @@ function lifecycleMixin (Vue) {
         /* istanbul ignore if */
         if (vm$$1.$options.template) {
           warn(
-            'You are using the runtime-only build of Vue where the template ' +
+            'You are using the runtime-only build of Blu where the template ' +
             'option is not available. Either pre-compile the templates into ' +
             'render functions, or use the compiler-included build.',
             vm$$1
@@ -1842,7 +1842,7 @@ function lifecycleMixin (Vue) {
     return vm$$1
   };
 
-  Vue.prototype._update = function (vnode, hydrating) {
+  Blu.prototype._update = function (vnode, hydrating) {
     var vm$$1 = this;
     if (vm$$1._isMounted) {
       callHook(vm$$1, 'beforeUpdate');
@@ -1853,19 +1853,19 @@ function lifecycleMixin (Vue) {
     var prevVnode = vm$$1._vnode;
     vm$$1._vnode = vnode;
     if (!prevVnode) {
-      // Vue.prototype.__patch__ is injected in entry points
+      // Blu.prototype.__patch__ is injected in entry points
       // based on the rendering backend used.
       vm$$1.$el = vm$$1.__patch__(vm$$1.$el, vnode, hydrating);
     } else {
       vm$$1.$el = vm$$1.__patch__(prevVnode, vnode);
     }
     activeInstance = prevActiveInstance;
-    // update __vue__ reference
+    // update __blu__ reference
     if (prevEl) {
-      prevEl.__vue__ = null;
+      prevEl.__blu__ = null;
     }
     if (vm$$1.$el) {
-      vm$$1.$el.__vue__ = vm$$1;
+      vm$$1.$el.__blu__ = vm$$1;
     }
     // if parent is an HOC, update its $el as well
     if (vm$$1.$vnode && vm$$1.$parent && vm$$1.$vnode === vm$$1.$parent._vnode) {
@@ -1876,7 +1876,7 @@ function lifecycleMixin (Vue) {
     }
   };
 
-  Vue.prototype._updateFromParent = function (
+  Blu.prototype._updateFromParent = function (
     propsData,
     listeners,
     parentVnode,
@@ -1915,14 +1915,14 @@ function lifecycleMixin (Vue) {
     }
   };
 
-  Vue.prototype.$forceUpdate = function () {
+  Blu.prototype.$forceUpdate = function () {
     var vm$$1 = this;
     if (vm$$1._watcher) {
       vm$$1._watcher.update();
     }
   };
 
-  Vue.prototype.$destroy = function () {
+  Blu.prototype.$destroy = function () {
     var vm$$1 = this;
     if (vm$$1._isBeingDestroyed) {
       return
@@ -1952,9 +1952,9 @@ function lifecycleMixin (Vue) {
     callHook(vm$$1, 'destroyed');
     // turn off all instance listeners.
     vm$$1.$off();
-    // remove __vue__ reference
+    // remove __blu__ reference
     if (vm$$1.$el) {
-      vm$$1.$el.__vue__ = null;
+      vm$$1.$el.__blu__ = null;
     }
   };
 }
@@ -1986,7 +1986,7 @@ function createComponent (
   }
 
   if (isObject(Ctor)) {
-    Ctor = Vue.extend(Ctor);
+    Ctor = Blu.extend(Ctor);
   }
 
   if (typeof Ctor !== 'function') {
@@ -2042,7 +2042,7 @@ function createComponent (
   // return a placeholder vnode
   var name = Ctor.options.name || tag;
   var vnode = new VNode(
-    ("vue-component-" + (Ctor.cid) + (name ? ("-" + name) : '')),
+    ("blu-component-" + (Ctor.cid) + (name ? ("-" + name) : '')),
     data, undefined, undefined, undefined, undefined, context,
     { Ctor: Ctor, propsData: propsData, listeners: listeners, tag: tag, children: children }
   );
@@ -2163,7 +2163,7 @@ function resolveAsyncComponent (
 
     var resolve = function (res) {
       if (isObject(res)) {
-        res = Vue.extend(res);
+        res = Blu.extend(res);
       }
       // cache resolved
       factory.resolved = res;
@@ -2343,12 +2343,12 @@ function initRender (vm$$1) {
   }
 }
 
-function renderMixin (Vue) {
-  Vue.prototype.$nextTick = function (fn) {
+function renderMixin (Blu) {
+  Blu.prototype.$nextTick = function (fn) {
     nextTick(fn, this);
   };
 
-  Vue.prototype._render = function () {
+  Blu.prototype._render = function () {
     var vm$$1 = this;
     var ref = vm$$1.$options;
     var render = ref.render;
@@ -2406,20 +2406,20 @@ function renderMixin (Vue) {
   };
 
   // shorthands used in render functions
-  Vue.prototype._h = createElement;
+  Blu.prototype._h = createElement;
   // toString for mustaches
-  Vue.prototype._s = _toString;
+  Blu.prototype._s = _toString;
   // number conversion
-  Vue.prototype._n = toNumber;
+  Blu.prototype._n = toNumber;
   // empty vnode
-  Vue.prototype._e = emptyVNode;
+  Blu.prototype._e = emptyVNode;
   // loose equal
-  Vue.prototype._q = looseEqual;
+  Blu.prototype._q = looseEqual;
   // loose indexOf
-  Vue.prototype._i = looseIndexOf;
+  Blu.prototype._i = looseIndexOf;
 
   // render static tree by index
-  Vue.prototype._m = function renderStatic (
+  Blu.prototype._m = function renderStatic (
     index,
     isInFor
   ) {
@@ -2449,12 +2449,12 @@ function renderMixin (Vue) {
 
   // filter resolution helper
   var identity = function (_) { return _; };
-  Vue.prototype._f = function resolveFilter (id) {
+  Blu.prototype._f = function resolveFilter (id) {
     return resolveAsset(this.$options, 'filters', id, true) || identity
   };
 
   // render v-for
-  Vue.prototype._l = function renderList (
+  Blu.prototype._l = function renderList (
     val,
     render
   ) {
@@ -2481,7 +2481,7 @@ function renderMixin (Vue) {
   };
 
   // renderSlot
-  Vue.prototype._t = function (
+  Blu.prototype._t = function (
     name,
     fallback
   ) {
@@ -2499,7 +2499,7 @@ function renderMixin (Vue) {
   };
 
   // apply v-bind object
-  Vue.prototype._b = function bindProps (
+  Blu.prototype._b = function bindProps (
     data,
     value,
     asProp
@@ -2530,7 +2530,7 @@ function renderMixin (Vue) {
   };
 
   // expose v-on keyCodes
-  Vue.prototype._k = function getKeyCodes (key) {
+  Blu.prototype._k = function getKeyCodes (key) {
     return config.keyCodes[key]
   };
 }
@@ -2588,13 +2588,13 @@ function initEvents (vm$$1) {
   }
 }
 
-function eventsMixin (Vue) {
-  Vue.prototype.$on = function (event, fn) {
+function eventsMixin (Blu) {
+  Blu.prototype.$on = function (event, fn) {
     var vm$$1 = this;(vm$$1._events[event] || (vm$$1._events[event] = [])).push(fn);
     return vm$$1
   };
 
-  Vue.prototype.$once = function (event, fn) {
+  Blu.prototype.$once = function (event, fn) {
     var vm$$1 = this;
     function on () {
       vm$$1.$off(event, on);
@@ -2605,7 +2605,7 @@ function eventsMixin (Vue) {
     return vm$$1
   };
 
-  Vue.prototype.$off = function (event, fn) {
+  Blu.prototype.$off = function (event, fn) {
     var vm$$1 = this;
     // all
     if (!arguments.length) {
@@ -2634,7 +2634,7 @@ function eventsMixin (Vue) {
     return vm$$1
   };
 
-  Vue.prototype.$emit = function (event) {
+  Blu.prototype.$emit = function (event) {
     var vm$$1 = this;
     var cbs = vm$$1._events[event];
     if (cbs) {
@@ -2652,13 +2652,13 @@ function eventsMixin (Vue) {
 
 var uid = 0;
 
-function initMixin (Vue) {
-  Vue.prototype._init = function (options) {
+function initMixin (Blu) {
+  Blu.prototype._init = function (options) {
     var vm$$1 = this;
     // a uid
     vm$$1._uid = uid++;
     // a flag to avoid this being observed
-    vm$$1._isVue = true;
+    vm$$1._isBlu = true;
     // merge options
     if (options && options._isComponent) {
       // optimize internal component instantiation
@@ -2722,19 +2722,19 @@ function initMixin (Vue) {
   }
 }
 
-function Vue (options) {
+function Blu (options) {
   if (process.env.NODE_ENV !== 'production' &&
-    !(this instanceof Vue)) {
-    warn('Vue is a constructor and should be called with the `new` keyword');
+    !(this instanceof Blu)) {
+    warn('Blu is a constructor and should be called with the `new` keyword');
   }
   this._init(options);
 }
 
-initMixin(Vue);
-stateMixin(Vue);
-eventsMixin(Vue);
-lifecycleMixin(Vue);
-renderMixin(Vue);
+initMixin(Blu);
+stateMixin(Blu);
+eventsMixin(Blu);
+lifecycleMixin(Blu);
+renderMixin(Blu);
 
 /*  */
 
@@ -2786,7 +2786,7 @@ strats.data = function (
   vm$$1
 ) {
   if (!vm$$1) {
-    // in a Vue.extend merge, both should be functions
+    // in a Blu.extend merge, both should be functions
     if (!childVal) {
       return parentVal
     }
@@ -2936,7 +2936,7 @@ function normalizeComponents (options) {
       }
       def = components[key];
       if (isPlainObject(def)) {
-        components[key] = Vue.extend(def);
+        components[key] = Blu.extend(def);
       }
     }
   }
@@ -3010,7 +3010,7 @@ function mergeOptions (
   if (child.mixins) {
     for (var i = 0, l = child.mixins.length; i < l; i++) {
       var mixin = child.mixins[i];
-      if (mixin.prototype instanceof Vue) {
+      if (mixin.prototype instanceof Blu) {
         mixin = mixin.options;
       }
       parent = mergeOptions(parent, mixin, vm$$1);
@@ -3461,7 +3461,7 @@ var attribute = new RegExp(
 );
 
 // could use https://www.w3.org/TR/1999/REC-xml-names-19990114/#NT-QName
-// but for Vue templates we can enforce a simple charset
+// but for Blu templates we can enforce a simple charset
 var ncname = '[a-zA-Z_][\\w\\-\\.]*';
 var qnameCapture = '((?:' + ncname + '\\:)?' + ncname + ')';
 var startTagOpen = new RegExp('^<' + qnameCapture);
@@ -3833,7 +3833,7 @@ function parseText (
 /*  */
 
 function baseWarn (msg) {
-  console.error(("[Vue parser]: " + msg));
+  console.error(("[Blu parser]: " + msg));
 }
 
 function pluckModuleFunction (
@@ -5186,7 +5186,7 @@ function compileToFunctions (
     } catch (e) {
       if (e.toString().match(/unsafe-eval|CSP/)) {
         _warn(
-          'It seems you are using the standalone build of Vue.js in an ' +
+          'It seems you are using the standalone build of Blu.js in an ' +
           'environment with Content Security Policy that prohibits unsafe-eval. ' +
           'The template compiler cannot work in this environment. Consider ' +
           'relaxing the policy to allow unsafe-eval or pre-compiling your ' +
@@ -5320,13 +5320,13 @@ function createRenderFunction (
       } else {
         if (getKey && !cache) {
           warnOnce(
-            "[vue-server-renderer] Component " + (Ctor.options.name || '(anonymous)') + " implemented serverCacheKey, " +
+            "[blu-server-renderer] Component " + (Ctor.options.name || '(anonymous)') + " implemented serverCacheKey, " +
             'but no cache was provided to the renderer.'
           );
         }
         if (getKey && !name) {
           warnOnce(
-            "[vue-server-renderer] Components that implement \"serverCacheKey\" " +
+            "[blu-server-renderer] Components that implement \"serverCacheKey\" " +
             "must also define a unique \"name\" option."
           );
         }
@@ -5529,7 +5529,7 @@ function runInVm (code, _context) {
     var wrapper = NativeModule.wrap(code);
     var context = createContext(_context);
     var compiledWrapper = vm.runInNewContext(wrapper, context, {
-      filename: '__vue_ssr_bundle__',
+      filename: '__blu_ssr_bundle__',
       displayErrors: true
     });
     var m = { exports: {}};

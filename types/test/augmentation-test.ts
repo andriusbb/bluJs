@@ -1,14 +1,14 @@
-import Vue = require("../index");
+import Blu = require("../index");
 
-declare module "../vue" {
+declare module "../blu" {
   // add instance property and method
-  interface Vue {
+  interface Blu {
     $instanceProperty: string;
     $instanceMethod(): void;
   }
 
   // add static property and method
-  namespace Vue {
+  namespace Blu {
     const staticProperty: string;
     function staticMethod(): void;
   }
@@ -16,12 +16,12 @@ declare module "../vue" {
 
 // augment ComponentOptions
 declare module "../options" {
-  interface ComponentOptions<V extends Vue> {
+  interface ComponentOptions<V extends Blu> {
     foo?: string;
   }
 }
 
-const vm = new Vue({
+const vm = new Blu({
   data: {
     a: true
   },
@@ -31,5 +31,5 @@ const vm = new Vue({
 vm.$instanceProperty;
 vm.$instanceMethod();
 
-Vue.staticProperty;
-Vue.staticMethod();
+Blu.staticProperty;
+Blu.staticMethod();

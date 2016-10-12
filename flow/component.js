@@ -17,7 +17,7 @@ declare interface Component {
   static filter: (id: string, def?: Function) => Function | void;
 
   // public properties
-  $el: any; // so that we can attach __vue__ to it
+  $el: any; // so that we can attach __blu__ to it
   $data: Object;
   $options: ComponentOptions;
   $parent: Component | void;
@@ -49,7 +49,7 @@ declare interface Component {
 
   // private properties
   _uid: number;
-  _isVue: true;
+  _isBlu: true;
   _self: Component;
   _renderProxy: Component;
   _renderContext: ?Component;

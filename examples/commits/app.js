@@ -1,10 +1,10 @@
-var apiURL = 'https://api.github.com/repos/vuejs/vue/commits?per_page=3&sha='
+var apiURL = 'https://api.github.com/repos/blujs/blu/commits?per_page=3&sha='
 
 /**
  * Actual demo
  */
 
-var demo = new Vue({
+var demo = new Blu({
 
   el: '#demo',
 

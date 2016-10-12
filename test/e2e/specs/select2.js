@@ -22,19 +22,19 @@ module.exports = {
 
       // test dynamic options
       .execute(function () {
-        vm.options.push({ id: 3, text: 'Vue' })
+        vm.options.push({ id: 3, text: 'Blu' })
       })
       .moveToElement('span.select2', 5, 5).mouseButtonClick()
       .assert.count('.select2-results__option', 4)
       .assert.containsText('.select2-results__option:nth-child(1)', 'Select one')
       .assert.containsText('.select2-results__option:nth-child(2)', 'Hello')
       .assert.containsText('.select2-results__option:nth-child(3)', 'World')
-      .assert.containsText('.select2-results__option:nth-child(4)', 'Vue')
+      .assert.containsText('.select2-results__option:nth-child(4)', 'Blu')
 
       .click('.select2-results__option:nth-child(4)')
       .assert.count('.select2-results__option', 0)
       .assert.containsText('p', 'Selected: 3')
-      .assert.containsText('span.select2', 'Vue')
+      .assert.containsText('span.select2', 'Blu')
 
       .execute(function () {
         vm.selected = 2

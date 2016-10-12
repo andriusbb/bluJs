@@ -1,19 +1,19 @@
 {
-  "name": "vue",
+  "name": "blu",
   "version": "2.0.2",
   "description": "Reactive, component-oriented view layer for modern web interfaces.",
-  "main": "dist/vue.common.js",
+  "main": "dist/blu.common.js",
   "typings": "types/index.d.ts",
   "files": [
-    "dist/vue.common.js",
-    "dist/vue.js",
-    "dist/vue.min.js",
+    "dist/blu.common.js",
+    "dist/blu.js",
+    "dist/blu.min.js",
     "src",
     "types/index.d.ts",
     "types/options.d.ts",
     "types/plugin.d.ts",
     "types/vnode.d.ts",
-    "types/vue.d.ts"
+    "types/blu.d.ts"
   ],
   "scripts": {
     "dev": "TARGET=web-standalone-dev rollup -w -c build/config.js",
@@ -22,11 +22,11 @@
     "dev:ssr": "TARGET=web-server-renderer rollup -w -c build/config.js",
     "dev:compiler": "TARGET=web-compiler rollup -w -c build/config.js",
     "build": "node build/build.js",
-    "build:ssr": "npm run build -- vue.common.js,vue-server-renderer",
+    "build:ssr": "npm run build -- blu.common.js,blu-server-renderer",
     "test": "npm run lint && flow check && npm run test:types && npm run test:cover && npm run test:e2e -- --env phantomjs && npm run test:ssr",
     "test:unit": "karma start build/karma.unit.config.js",
     "test:cover": "karma start build/karma.cover.config.js",
-    "test:e2e": "npm run build -- vue.js && node test/e2e/runner.js",
+    "test:e2e": "npm run build -- blu.js && node test/e2e/runner.js",
     "test:ssr": "npm run build:ssr && VUE_ENV=server jasmine JASMINE_CONFIG_PATH=test/ssr/jasmine.json",
     "test:sauce": "npm run sauce -- 0 && npm run sauce -- 1 && npm run sauce -- 2",
     "test:types": "tsc -p ./types/test/tsconfig.json",
@@ -38,24 +38,24 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vuejs/vue.git"
+    "url": "git+https://github.com/blujs/blu.git"
   },
   "keywords": [
-    "vue"
+    "blu"
   ],
   "author": "Evan You",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/vuejs/vue/issues"
+    "url": "https://github.com/blujs/blu/issues"
   },
-  "homepage": "https://github.com/vuejs/vue#readme",
+  "homepage": "https://github.com/blujs/blu#readme",
   "devDependencies": {
     "babel-core": "^6.9.0",
     "babel-eslint": "^6.0.4",
     "babel-loader": "^6.2.4",
     "babel-plugin-coverage": "^1.0.0",
     "babel-preset-es2015": "^6.9.0",
-    "babel-preset-flow-vue": "^1.0.0",
+    "babel-preset-flow-blu": "^1.0.0",
     "buble": "^0.14.0",
     "chromedriver": "^2.21.2",
     "codecov.io": "^0.1.6",
@@ -64,7 +64,7 @@
     "entities": "^1.1.1",
     "es6-promise": "^3.2.1",
     "eslint": "^3.4.0",
-    "eslint-config-vue": "^1.1.0",
+    "eslint-config-blu": "^1.1.0",
     "eslint-loader": "^1.3.0",
     "eslint-plugin-flowtype": "^2.16.0",
     "eslint-plugin-html": "^1.5.2",

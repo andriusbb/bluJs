@@ -3,7 +3,7 @@ import { isEqual } from 'lodash'
 beforeEach(() => {
   jasmine.addMatchers({
     // override built-in toEqual because it behaves incorrectly
-    // on Vue-observed arrays in Safari
+    // on Blu-observed arrays in Safari
     toEqual: () => {
       return {
         compare: (a, b) => {

@@ -1,13 +1,13 @@
 import config from './config'
 import { initGlobalAPI } from './global-api/index'
-import Vue from './instance/index'
+import Blu from './instance/index'
 
-initGlobalAPI(Vue)
+initGlobalAPI(Blu)
 
-Object.defineProperty(Vue.prototype, '$isServer', {
+Object.defineProperty(Blu.prototype, '$isServer', {
   get: () => config._isServer
 })
 
-Vue.version = '2.0.2'
+Blu.version = '2.0.2'
 
-export default Vue
+export default Blu

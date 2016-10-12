@@ -1,4 +1,4 @@
-var app = new Vue({
+var app = new Blu({
   el: '#app',
   data: {
     databases: []

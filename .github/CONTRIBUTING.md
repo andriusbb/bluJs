@@ -1,8 +1,8 @@
-# Vue.js Contributing Guide
+# Blu.js Contributing Guide
 
-Hi! I’m really excited that you are interested in contributing to Vue.js. Before submitting your contribution though, please make sure to take a moment and read through the following guidelines.
+Hi! I’m really excited that you are interested in contributing to Blu.js. Before submitting your contribution though, please make sure to take a moment and read through the following guidelines.
 
-- [Code of Conduct](https://github.com/vuejs/vue/blob/dev/.github/CODE_OF_CONDUCT.md)
+- [Code of Conduct](https://github.com/blujs/blu/blob/dev/.github/CODE_OF_CONDUCT.md)
 - [Issue Reporting Guidelines](#issue-reporting-guidelines)
 - [Pull Request Guidelines](#pull-request-guidelines)
 - [Development Setup](#development-setup)
@@ -12,17 +12,17 @@ Hi! I’m really excited that you are interested in contributing to Vue.js. Befo
 
 - The issue list of this repo is **exclusively** for bug reports and feature requests. Non-conforming issues will be closed immediately.
 
-  - For simple beginner questions, you can get quick answers from [The Gitter chat room](https://gitter.im/vuejs/vue).
+  - For simple beginner questions, you can get quick answers from [The Gitter chat room](https://gitter.im/blujs/blu).
 
-  - For more complicated questions, you can use [the official forum](http://forum.vuejs.org/) or StackOverflow. Make sure to provide enough information when asking your questions - this makes it easier for others to help you!
+  - For more complicated questions, you can use [the official forum](http://forum.blujs.org/) or StackOverflow. Make sure to provide enough information when asking your questions - this makes it easier for others to help you!
 
 - Try to search for your issue, it may have already been answered or even fixed in the development branch.
 
-- Check if the issue is reproducible with the latest stable version of Vue. If you are using a pre-release, please indicate the specific version you are using.
+- Check if the issue is reproducible with the latest stable version of Blu. If you are using a pre-release, please indicate the specific version you are using.
 
 - It is **required** that you clearly describe the steps necessary to reproduce the issue you are running into. Issues with no clear repro steps will not be triaged. If an issue labeled "need repro" receives no further input from the issue author for more than 5 days, it will be closed.
 
-- It is recommended that you make a JSFiddle/JSBin/Codepen to demonstrate your issue. You could start with [this template](http://jsfiddle.net/5sH6A/) that already includes the latest version of Vue.
+- It is recommended that you make a JSFiddle/JSBin/Codepen to demonstrate your issue. You could start with [this template](http://jsfiddle.net/5sH6A/) that already includes the latest version of Blu.
 
 - For bugs that involves build setups, you can create a reproduction repository with steps in the README.
 
@@ -61,7 +61,7 @@ $ npm install
 ### Commonly used NPM scripts
 
 ``` bash
-# watch and auto re-build dist/vue.js
+# watch and auto re-build dist/blu.js
 $ npm run dev
 
 # watch and auto re-run unit tests in Chrome
@@ -86,7 +86,7 @@ The default test script will do the following: lint with ESLint -> type check wi
 
 - **`flow`**: contains type declarations for [Flow](https://flowtype.org/). These declarations are loaded **globally** and you will see them used in type annotations in normal source code.
 
-- **`packages`**: contains `vue-server-renderer` and `vue-template-compiler`, which are distributed as separate NPM packages. They are automatically generated from the source code and always have the same version with the main `vue` package.
+- **`packages`**: contains `blu-server-renderer` and `blu-template-compiler`, which are distributed as separate NPM packages. They are automatically generated from the source code and always have the same version with the main `blu` package.
 
 - **`test`**: contains all tests. The unit tests are written with [Jasmine](http://jasmine.github.io/2.3/introduction.html) and run with [Karma](http://karma-runner.github.io/0.13/index.html). The e2e tests are written for and run with [Nightwatch.js](http://nightwatchjs.org/).
 
@@ -94,13 +94,13 @@ The default test script will do the following: lint with ESLint -> type check wi
 
   - **`entries`**: contains entries for different builds and packages.
 
-    - **`web-runtime`**: the entry for `dist/vue.common.js`, a.k.a the runtime-only build. It does not include the template to render function compiler, so it does not support the `template` option. **This is set as the `main` field in `package.json` so it is the default export when you import Vue as an NPM package.**
+    - **`web-runtime`**: the entry for `dist/blu.common.js`, a.k.a the runtime-only build. It does not include the template to render function compiler, so it does not support the `template` option. **This is set as the `main` field in `package.json` so it is the default export when you import Blu as an NPM package.**
 
-    - **`web-runtime-with-compiler`**: the entry for `dist/vue.js`, a.k.a the standalone build. It includes the template to render function compiler. To use this build from the NPM packages, do `import Vue from 'vue/dist/vue'`, or alias `vue` to `vue/dist/vue` in your build tool configuration.
+    - **`web-runtime-with-compiler`**: the entry for `dist/blu.js`, a.k.a the standalone build. It includes the template to render function compiler. To use this build from the NPM packages, do `import Blu from 'blu/dist/blu'`, or alias `blu` to `blu/dist/blu` in your build tool configuration.
 
-    - **`web-compiler.js`**: the entry for the `vue-template-compiler` NPM package.
+    - **`web-compiler.js`**: the entry for the `blu-template-compiler` NPM package.
 
-    - **`web-server-renderer.js`**: the entry for the `vue-server-renderer` NPM package.
+    - **`web-server-renderer.js`**: the entry for the `blu-server-renderer` NPM package.
 
   - **`compiler`**: contains code for the template-to-render-function compiler.
 
@@ -108,13 +108,13 @@ The default test script will do the following: lint with ESLint -> type check wi
 
   - **`core`**: contains universal, platform-agnostic runtime code.
 
-    The Vue 2.0 core is platform-agnostic - which means code inside `core` should be able to run in any JavaScript environment, be it the browser, Node.js, or an embedded JavaScript runtime in native applications.
+    The Blu 2.0 core is platform-agnostic - which means code inside `core` should be able to run in any JavaScript environment, be it the browser, Node.js, or an embedded JavaScript runtime in native applications.
 
     - **`observer`**: contains code related to the reactivity system.
 
     - **`vdom`**: contains code related to vdom element creation and patching.
 
-    - **`instance`**: contains Vue instance constructor and prototype methods.
+    - **`instance`**: contains Blu instance constructor and prototype methods.
 
     - **`global-api`**: as the name suggests.
 
@@ -126,7 +126,7 @@ The default test script will do the following: lint with ESLint -> type check wi
 
     Each platform module contains three parts: `compiler`, `runtime` and `server`, corresponding to the three directories above. Each part contains platform-specific modules/utilities which are then imported and injected to the core counterparts in platform-specific entry files. For example, the code implementing the logic behind `v-bind:class` is in `platforms/web/runtime/modules/class.js` - which is imported in `entries/web-runtime.js` and used to create the browser-specific vdom patching function.
 
-  - **`sfc`**: contains single-file component (`*.vue` files) parsing logic. This is used in the `vue-template-compiler` package.
+  - **`sfc`**: contains single-file component (`*.blu` files) parsing logic. This is used in the `blu-template-compiler` package.
 
   - **`shared`**: contains utilities shared across the entire codebase.
 

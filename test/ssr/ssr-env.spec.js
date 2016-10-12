@@ -1,14 +1,14 @@
-import Vue from '../../dist/vue.common.js'
-import { createRenderer } from '../../packages/vue-server-renderer'
+import Blu from '../../dist/blu.common.js'
+import { createRenderer } from '../../packages/blu-server-renderer'
 import '../helpers/to-have-been-warned.js'
 
 describe('SSR: VUE_ENV=server', () => {
-  it('_isServer set as "server" on Vue config', () => {
-    expect(Vue.config._isServer).toBe(true)
+  it('_isServer set as "server" on Blu config', () => {
+    expect(Blu.config._isServer).toBe(true)
   })
 
   it('$isServer set as true on VM', () => {
-    const vm = new Vue({
+    const vm = new Blu({
       data: {
         foo: 'server',
         bar: 'rendering'
@@ -18,7 +18,7 @@ describe('SSR: VUE_ENV=server', () => {
   })
 
   it('no data observations', () => {
-    const vm = new Vue({
+    const vm = new Blu({
       data: {
         foo: 'server',
         bar: 'rendering'

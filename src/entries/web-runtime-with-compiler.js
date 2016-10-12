@@ -1,6 +1,6 @@
 /* @flow */
 
-import Vue from './web-runtime'
+import Blu from './web-runtime'
 import { warn, cached } from 'core/util/index'
 import { query } from 'web/util/index'
 import { shouldDecodeTags, shouldDecodeNewlines } from 'web/util/compat'
@@ -11,8 +11,8 @@ const idToTemplate = cached(id => {
   return el && el.innerHTML
 })
 
-const mount = Vue.prototype.$mount
-Vue.prototype.$mount = function (
+const mount = Blu.prototype.$mount
+Blu.prototype.$mount = function (
   el?: string | Element,
   hydrating?: boolean
 ): Component {
@@ -21,7 +21,7 @@ Vue.prototype.$mount = function (
   /* istanbul ignore if */
   if (el === document.body || el === document.documentElement) {
     process.env.NODE_ENV !== 'production' && warn(
-      `Do not mount Vue to <html> or <body> - mount to normal elements instead.`
+      `Do not mount Blu to <html> or <body> - mount to normal elements instead.`
     )
     return this
   }
@@ -79,6 +79,6 @@ function getOuterHTML (el: Element): string {
   }
 }
 
-Vue.compile = compileToFunctions
+Blu.compile = compileToFunctions
 
-export default Vue
+export default Blu

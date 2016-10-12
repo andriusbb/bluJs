@@ -1,11 +1,11 @@
 # Backers
 
-You can join them in supporting  Vue.js development by [pledging on Patreon](https://www.patreon.com/evanyou)! Backers in the same pledge level appear in the order of pledge date.
+You can join them in supporting  Blu.js development by [pledging on Patreon](https://www.patreon.com/evanyou)! Backers in the same pledge level appear in the order of pledge date.
 
 ### $2000
 
 <a href="http://www.thedifferenceengine.io/">
-  <img width="600px" src="https://raw.githubusercontent.com/vuejs/vuejs.org/master/themes/vue/source/images/tde.png">
+  <img width="600px" src="https://raw.githubusercontent.com/blujs/blujs.org/master/themes/blu/source/images/tde.png">
 </a>
 
 ---
@@ -17,35 +17,35 @@ You can join them in supporting  Vue.js development by [pledging on Patreon](htt
 </a>
 
 <a href="https://jsfiddle.net/">
-  <img width="240px" src="https://raw.githubusercontent.com/vuejs/vuejs.org/master/themes/vue/source/images/jsfiddle.png">
+  <img width="240px" src="https://raw.githubusercontent.com/blujs/blujs.org/master/themes/blu/source/images/jsfiddle.png">
 </a>
 
 <a href="https://laravel.com">
-  <img width="240px" src="https://raw.githubusercontent.com/vuejs/vuejs.org/master/themes/vue/source/images/laravel.png">
+  <img width="240px" src="https://raw.githubusercontent.com/blujs/blujs.org/master/themes/blu/source/images/laravel.png">
 </a>
 
 <a href="https://chaitin.cn">
-  <img width="240px" src="https://raw.githubusercontent.com/vuejs/vuejs.org/master/themes/vue/source/images/chaitin.png">
+  <img width="240px" src="https://raw.githubusercontent.com/blujs/blujs.org/master/themes/blu/source/images/chaitin.png">
 </a>
 
 <a href="https://htmlburger.com/">
-  <img width="240px" src="https://raw.githubusercontent.com/vuejs/vuejs.org/master/themes/vue/source/images/htmlburger.png">
+  <img width="240px" src="https://raw.githubusercontent.com/blujs/blujs.org/master/themes/blu/source/images/htmlburger.png">
 </a>
 
 <a href="https://starter.someline.com/">
-  <img width="240px" src="https://raw.githubusercontent.com/vuejs/vuejs.org/master/themes/vue/source/images/someline.png">
+  <img width="240px" src="https://raw.githubusercontent.com/blujs/blujs.org/master/themes/blu/source/images/someline.png">
 </a>
 
-<a href="http://gold.xitu.io/?utm_source=vuejs&utm_medium=image&utm_content=juejin&utm_campaign=q3_website">
-  <img width="180px" src="https://raw.githubusercontent.com/vuejs/vuejs.org/master/themes/vue/source/images/juejin.png">
+<a href="http://gold.xitu.io/?utm_source=blujs&utm_medium=image&utm_content=juejin&utm_campaign=q3_website">
+  <img width="180px" src="https://raw.githubusercontent.com/blujs/blujs.org/master/themes/blu/source/images/juejin.png">
 </a>
 
 <a href="http://monterail.com/" target="_blank">
-  <img width="240px" src="https://raw.githubusercontent.com/vuejs/vuejs.org/master/themes/vue/source/images/monterail.png">
+  <img width="240px" src="https://raw.githubusercontent.com/blujs/blujs.org/master/themes/blu/source/images/monterail.png">
 </a>
 
 <a href="https://www.trisoft.ro/" target="_blank">
-  <img width="240px" src="https://raw.githubusercontent.com/vuejs/vuejs.org/master/themes/vue/source/images/trisoft.png">
+  <img width="240px" src="https://raw.githubusercontent.com/blujs/blujs.org/master/themes/blu/source/images/trisoft.png">
 </a>
 
 ---

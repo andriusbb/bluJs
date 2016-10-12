@@ -1,6 +1,6 @@
 /* @flow */
 
-import Vue from 'core/index'
+import Blu from 'core/index'
 import config from 'core/config'
 import { extend, noop } from 'shared/util'
 import { devtools, inBrowser } from 'core/util/index'
@@ -16,20 +16,20 @@ import {
 } from 'web/util/index'
 
 // install platform specific utils
-Vue.config.isUnknownElement = isUnknownElement
-Vue.config.isReservedTag = isReservedTag
-Vue.config.getTagNamespace = getTagNamespace
-Vue.config.mustUseProp = mustUseProp
+Blu.config.isUnknownElement = isUnknownElement
+Blu.config.isReservedTag = isReservedTag
+Blu.config.getTagNamespace = getTagNamespace
+Blu.config.mustUseProp = mustUseProp
 
 // install platform runtime directives & components
-extend(Vue.options.directives, platformDirectives)
-extend(Vue.options.components, platformComponents)
+extend(Blu.options.directives, platformDirectives)
+extend(Blu.options.components, platformComponents)
 
 // install platform patch function
-Vue.prototype.__patch__ = config._isServer ? noop : patch
+Blu.prototype.__patch__ = config._isServer ? noop : patch
 
 // wrap mount
-Vue.prototype.$mount = function (
+Blu.prototype.$mount = function (
   el?: string | Element,
   hydrating?: boolean
 ): Component {
@@ -42,17 +42,17 @@ Vue.prototype.$mount = function (
 setTimeout(() => {
   if (config.devtools) {
     if (devtools) {
-      devtools.emit('init', Vue)
+      devtools.emit('init', Blu)
     } else if (
       process.env.NODE_ENV !== 'production' &&
       inBrowser && /Chrome\/\d+/.test(window.navigator.userAgent)
     ) {
       console.log(
-        'Download the Vue Devtools for a better development experience:\n' +
-        'https://github.com/vuejs/vue-devtools'
+        'Download the Blu Devtools for a better development experience:\n' +
+        'https://github.com/blujs/blu-devtools'
       )
     }
   }
 }, 0)
 
-export default Vue
+export default Blu

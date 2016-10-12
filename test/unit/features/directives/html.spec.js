@@ -1,8 +1,8 @@
-import Vue from 'vue'
+import Blu from 'blu'
 
 describe('Directive v-html', () => {
   it('should render html', () => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: '<div v-html="a"></div>',
       data: { a: 'hello' }
     }).$mount()
@@ -10,7 +10,7 @@ describe('Directive v-html', () => {
   })
 
   it('should encode html entities', () => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: '<div v-html="a"></div>',
       data: { a: '<span>&lt;</span>' }
     }).$mount()
@@ -18,7 +18,7 @@ describe('Directive v-html', () => {
   })
 
   it('should work inline', () => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: `<div v-html="'<span>&lt;</span>'"></div>`
     }).$mount()
     expect(vm.$el.innerHTML).toBe('<span>&lt;</span>')
@@ -27,12 +27,12 @@ describe('Directive v-html', () => {
   it('should work inline in DOM', () => {
     const el = document.createElement('div')
     el.innerHTML = `<div v-html="'<span>&lt;</span>'"></div>`
-    const vm = new Vue({ el })
+    const vm = new Blu({ el })
     expect(vm.$el.children[0].innerHTML).toBe('<span>&lt;</span>')
   })
 
   it('should support all value types', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: '<div v-html="a"></div>',
       data: { a: false }
     }).$mount()

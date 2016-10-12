@@ -1,9 +1,9 @@
-import Vue from 'vue'
+import Blu from 'blu'
 
 describe('Component slot', () => {
   let vm, child
   function mount (options) {
-    vm = new Vue({
+    vm = new Blu({
       data: {
         msg: 'parent message'
       },
@@ -147,7 +147,7 @@ describe('Component slot', () => {
   })
 
   it('slot inside v-if', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       data: {
         a: 1,
         b: 2,
@@ -184,7 +184,7 @@ describe('Component slot', () => {
   })
 
   it('nested slots', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: '<test><test2><p>{{ msg }}</p></test2></test>',
       data: {
         msg: 'foo'
@@ -206,7 +206,7 @@ describe('Component slot', () => {
   })
 
   it('v-if on inserted content', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: '<test><p v-if="ok">{{ msg }}</p></test>',
       data: {
         ok: true,
@@ -230,7 +230,7 @@ describe('Component slot', () => {
   })
 
   it('template slot', function () {
-    const vm = new Vue({
+    const vm = new Blu({
       template: '<test><template slot="test">hello</template></test>',
       components: {
         test: {
@@ -242,7 +242,7 @@ describe('Component slot', () => {
   })
 
   it('combined with v-for', () => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: '<div><test v-for="i in 3">{{ i }}</test></div>',
       components: {
         test: {
@@ -266,7 +266,7 @@ describe('Component slot', () => {
   })
 
   it('default slot should use fallback content if has only whitespace', () => {
-    Vue.config.preserveWhitespace = true
+    Blu.config.preserveWhitespace = true
     mount({
       childTemplate: `
         <div>
@@ -280,11 +280,11 @@ describe('Component slot', () => {
     expect(child.$el.innerHTML).toBe(
       '<div>1</div> <p>this is the default slot</p> <div>2</div>'
     )
-    Vue.config.preserveWhitespace = false
+    Blu.config.preserveWhitespace = false
   })
 
   it('programmatic access to $slots', () => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: '<test><p slot="a">A</p><div>C</div><p slot="b">B</div></p></test>',
       components: {
         test: {
@@ -314,7 +314,7 @@ describe('Component slot', () => {
   })
 
   it('warn if user directly returns array', () => {
-    new Vue({
+    new Blu({
       template: '<test><div></div></test>',
       components: {
         test: {
@@ -329,7 +329,7 @@ describe('Component slot', () => {
 
   // #3254
   it('should not keep slot name when passed further down', () => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: '<test><span slot="foo">foo</span></test>',
       components: {
         test: {
@@ -352,7 +352,7 @@ describe('Component slot', () => {
   })
 
   it('should not keep slot name when passed further down (nested)', () => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: '<wrap><test><span slot="foo">foo</span></test></wrap>',
       components: {
         wrap: {
@@ -387,7 +387,7 @@ describe('Component slot', () => {
       `
     }
 
-    const vm = new Vue({
+    const vm = new Blu({
       template: '<test><span slot="foo">foo</span></test>',
       components: {
         test: {
@@ -405,7 +405,7 @@ describe('Component slot', () => {
 
   // #3400
   it('named slots should be consistent across re-renders', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: `
         <comp>
           <div slot="foo">foo</div>
@@ -430,7 +430,7 @@ describe('Component slot', () => {
   // #3437
   it('should correctly re-create components in slot', done => {
     const calls = []
-    const vm = new Vue({
+    const vm = new Blu({
       template: `
         <comp ref="child">
           <div slot="foo">
@@ -471,7 +471,7 @@ describe('Component slot', () => {
   })
 
   it('warn duplicate slots', () => {
-    new Vue({
+    new Blu({
       template: `<div>
         <test>
           <div>foo</div>
@@ -492,7 +492,7 @@ describe('Component slot', () => {
   })
 
   it('should not warn valid conditional slots', () => {
-    new Vue({
+    new Blu({
       template: `<div>
         <test>
           <div>foo</div>
@@ -513,7 +513,7 @@ describe('Component slot', () => {
   // #3518
   it('events should not break when slot is toggled by v-if', done => {
     const spy = jasmine.createSpy()
-    const vm = new Vue({
+    const vm = new Blu({
       template: `<test><div class="click" @click="test">hi</div></test>`,
       methods: {
         test: spy
@@ -539,7 +539,7 @@ describe('Component slot', () => {
   })
 
   it('renders static tree with text', () => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: `<div><test><template><div></div>Hello<div></div></template></test></div>`,
       components: {
         test: {
@@ -553,7 +553,7 @@ describe('Component slot', () => {
 
   // #3872
   it('functional component as slot', () => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: `
         <parent>
           <child>one</child>

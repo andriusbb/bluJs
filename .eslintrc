@@ -1,7 +1,7 @@
 {
   "root": true,
   "parser": "babel-eslint",
-  "extends": "vue",
+  "extends": "blu",
   "plugins": ["flowtype"],
   "rules": {
     "flowtype/define-flow-type": 1,

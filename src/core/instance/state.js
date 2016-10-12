@@ -182,7 +182,7 @@ function createWatcher (vm: Component, key: string, handler: any) {
   vm.$watch(key, handler, options)
 }
 
-export function stateMixin (Vue: Class<Component>) {
+export function stateMixin (Blu: Class<Component>) {
   // flow somehow has problems with directly declared definition object
   // when using Object.defineProperty, so we have to procedurally build up
   // the object here.
@@ -199,12 +199,12 @@ export function stateMixin (Vue: Class<Component>) {
       )
     }
   }
-  Object.defineProperty(Vue.prototype, '$data', dataDef)
+  Object.defineProperty(Blu.prototype, '$data', dataDef)
 
-  Vue.prototype.$set = set
-  Vue.prototype.$delete = del
+  Blu.prototype.$set = set
+  Blu.prototype.$delete = del
 
-  Vue.prototype.$watch = function (
+  Blu.prototype.$watch = function (
     expOrFn: string | Function,
     cb: Function,
     options?: Object

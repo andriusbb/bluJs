@@ -1,9 +1,9 @@
-import Vue from 'vue'
+import Blu from 'blu'
 
 describe('Instance methods events', () => {
   let vm, spy
   beforeEach(() => {
-    vm = new Vue()
+    vm = new Blu()
     spy = jasmine.createSpy('emitter')
   })
 

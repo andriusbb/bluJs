@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import Blu from 'blu'
 
 describe('ref', () => {
   const components = {
@@ -13,7 +13,7 @@ describe('ref', () => {
   }
 
   it('should work', () => {
-    const vm = new Vue({
+    const vm = new Blu({
       data: {
         value: 'bar'
       },
@@ -31,7 +31,7 @@ describe('ref', () => {
   })
 
   it('should dynamically update refs', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       data: {
         value: 'foo'
       },
@@ -46,7 +46,7 @@ describe('ref', () => {
   })
 
   it('should work as a hyperscript prop', () => {
-    const vm = new Vue({
+    const vm = new Blu({
       components,
       render (h) {
         return h('div', null, [
@@ -60,7 +60,7 @@ describe('ref', () => {
   })
 
   it('should accept HOC component', () => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: '<test ref="test"></test>',
       components
     })
@@ -70,7 +70,7 @@ describe('ref', () => {
   })
 
   it('should accept dynamic component', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: `<div>
         <component :is="test" ref="test"></component>
       </div>`,
@@ -89,7 +89,7 @@ describe('ref', () => {
   })
 
   it('should register as Array when used with v-for', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       data: {
         items: [1, 2, 3]
       },
@@ -115,7 +115,7 @@ describe('ref', () => {
   })
 
   it('should register as Array when used with v-for (components)', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       data: {
         items: [1, 2, 3]
       },
@@ -147,7 +147,7 @@ describe('ref', () => {
   })
 
   it('should register on component with empty roots', () => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: '<child ref="test"></child>',
       components: {
         child: {

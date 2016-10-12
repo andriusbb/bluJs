@@ -2,11 +2,11 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Vue benchmark</title>
+    <title>Blu benchmark</title>
   </head>
   <body>
     <script src="https://cdn.jsdelivr.net/lodash/4.10.0/lodash.min.js"></script>
-    <script src="../../dist/vue.min.js"></script>
+    <script src="../../dist/blu.min.js"></script>
     <style>
     .danger {
       background-color: red;
@@ -57,7 +57,7 @@
 
     var s = window.performance.now()
     console.profile('render')
-    var vm = new Vue({
+    var vm = new Blu({
       el: '#el',
       template: '#t',
       data: {
@@ -100,7 +100,7 @@
       return function () {
         var s = window.performance.now()
         fn.apply(this, arguments)
-        Vue.nextTick(function () {
+        Blu.nextTick(function () {
           vm.action = action
           vm.time = window.performance.now() - s
         })

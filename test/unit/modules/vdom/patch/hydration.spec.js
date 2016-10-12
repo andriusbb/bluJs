@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import Blu from 'blu'
 import { patch } from 'web/runtime/patch'
 import VNode from 'core/vdom/vnode'
 
@@ -95,7 +95,7 @@ describe('vdom patch: hydration', () => {
     const originalNode1 = dom.children[0]
     const originalNode2 = dom.children[1]
 
-    const vm = new Vue({
+    const vm = new Blu({
       template: '<div><span>{{msg}}</span><test class="a" :msg="msg"></test></div>',
       data: {
         msg: 'foo'
@@ -131,7 +131,7 @@ describe('vdom patch: hydration', () => {
     dom.setAttribute('server-rendered', 'true')
     dom.innerHTML = '<div><span>foo</span></div>'
 
-    new Vue({
+    new Blu({
       template: '<div><test></test></div>',
       components: {
         test: {
@@ -152,7 +152,7 @@ describe('vdom patch: hydration', () => {
     dom.innerHTML = '<div><span></span></div>'
     const span = dom.querySelector('span')
 
-    const vm = new Vue({
+    const vm = new Blu({
       template: '<div><test></test></div>',
       components: {
         test: {

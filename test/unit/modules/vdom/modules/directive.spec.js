@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import Blu from 'blu'
 import { patch } from 'web/runtime/patch'
 import VNode from 'core/vdom/vnode'
 
@@ -9,7 +9,7 @@ describe('vdom directive module', () => {
       update: jasmine.createSpy('update'),
       unbind: jasmine.createSpy('unbind')
     }
-    const vm = new Vue({ directives: { directive1 }})
+    const vm = new Blu({ directives: { directive1 }})
     // create
     const vnode1 = new VNode('div', {}, [
       new VNode('p', {

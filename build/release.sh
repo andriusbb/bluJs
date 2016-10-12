@@ -20,12 +20,12 @@ then
   VERSION=$VERSION npm run build
 
   # update packages
-  cd packages/vue-template-compiler
+  cd packages/blu-template-compiler
   npm version $VERSION
   npm publish
   cd -
 
-  cd packages/vue-server-renderer
+  cd packages/blu-server-renderer
   npm version $VERSION
   npm publish
   cd -

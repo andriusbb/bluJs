@@ -1,9 +1,9 @@
-import Vue from 'vue'
+import Blu from 'blu'
 
 describe('Global API: compile', () => {
   it('should compile render functions', () => {
-    const res = Vue.compile('<div><span>{{ msg }}</span></div>')
-    const vm = new Vue({
+    const res = Blu.compile('<div><span>{{ msg }}</span></div>')
+    const vm = new Blu({
       data: {
         msg: 'hello'
       },

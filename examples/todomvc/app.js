@@ -2,7 +2,7 @@
 // and hash-based routing in ~150 lines.
 
 // localStorage persistence
-var STORAGE_KEY = 'todos-vuejs-2.0'
+var STORAGE_KEY = 'todos-blujs-2.0'
 var todoStorage = {
   fetch: function () {
     var todos = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]')
@@ -34,8 +34,8 @@ var filters = {
   }
 }
 
-// app Vue instance
-var app = new Vue({
+// app Blu instance
+var app = new Blu({
   // app initial state
   data: {
     todos: todoStorage.fetch(),
@@ -55,7 +55,7 @@ var app = new Vue({
   },
 
   // computed properties
-  // https://vuejs.org/guide/computed.html
+  // https://blujs.org/guide/computed.html
   computed: {
     filteredTodos: function () {
       return filters[this.visibility](this.todos)
@@ -129,7 +129,7 @@ var app = new Vue({
 
   // a custom directive to wait for the DOM to be updated
   // before focusing on the input field.
-  // https://vuejs.org/guide/custom-directive.html
+  // https://blujs.org/guide/custom-directive.html
   directives: {
     'todo-focus': function (el, value) {
       if (value) {

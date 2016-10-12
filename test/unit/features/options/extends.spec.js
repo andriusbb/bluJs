@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import Blu from 'blu'
 
 describe('Options extends', () => {
   it('should work on objects', () => {
@@ -13,7 +13,7 @@ describe('Options extends', () => {
         return { b: 2 }
       }
     }
-    const vm = new Vue({
+    const vm = new Blu({
       extends: B,
       data: {
         c: 3
@@ -25,18 +25,18 @@ describe('Options extends', () => {
   })
 
   it('should work on extended constructors', () => {
-    const A = Vue.extend({
+    const A = Blu.extend({
       data () {
         return { a: 1 }
       }
     })
-    const B = Vue.extend({
+    const B = Blu.extend({
       extends: A,
       data () {
         return { b: 2 }
       }
     })
-    const vm = new Vue({
+    const vm = new Blu({
       extends: B,
       data: {
         c: 3

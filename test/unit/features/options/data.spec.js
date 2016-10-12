@@ -1,9 +1,9 @@
-import Vue from 'vue'
+import Blu from 'blu'
 
 describe('Options data', () => {
   it('should proxy and be reactive', done => {
     const data = { msg: 'foo' }
-    const vm = new Vue({
+    const vm = new Blu({
       data,
       template: '<div>{{ msg }}</div>'
     }).$mount()
@@ -16,7 +16,7 @@ describe('Options data', () => {
   })
 
   it('should merge data properly', () => {
-    const Test = Vue.extend({
+    const Test = Blu.extend({
       data () {
         return { a: 1 }
       }
@@ -34,7 +34,7 @@ describe('Options data', () => {
     vm = new Extended()
     expect(vm.a).toBe(1)
     // recursively merge objects
-    const WithObject = Vue.extend({
+    const WithObject = Blu.extend({
       data () {
         return {
           obj: {
@@ -55,21 +55,21 @@ describe('Options data', () => {
   })
 
   it('should warn non-function during extend', () => {
-    Vue.extend({
+    Blu.extend({
       data: { msg: 'foo' }
     })
     expect('The "data" option should be a function').toHaveBeenWarned()
   })
 
   it('should warn non object return', () => {
-    new Vue({
+    new Blu({
       data () {}
     })
     expect('data functions should return an object').toHaveBeenWarned()
   })
 
   it('should warn replacing root $data', () => {
-    const vm = new Vue({
+    const vm = new Blu({
       data: {}
     })
     vm.$data = {}

@@ -29,7 +29,7 @@ var data = {
 }
 
 // define the item component
-Vue.component('item', {
+Blu.component('item', {
   template: '#item-template',
   props: {
     model: Object
@@ -53,7 +53,7 @@ Vue.component('item', {
     },
     changeType: function () {
       if (!this.isFolder) {
-        Vue.set(this.model, 'children', [])
+        Blu.set(this.model, 'children', [])
         this.addChild()
         this.open = true
       }
@@ -67,7 +67,7 @@ Vue.component('item', {
 })
 
 // boot up the demo
-var demo = new Vue({
+var demo = new Blu({
   el: '#demo',
   data: {
     treeData: data

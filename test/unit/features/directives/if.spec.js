@@ -1,8 +1,8 @@
-import Vue from 'vue'
+import Blu from 'blu'
 
 describe('Directive v-if', () => {
   it('should check if value is truthy', () => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: '<div><span v-if="foo">hello</span></div>',
       data: { foo: true }
     }).$mount()
@@ -10,7 +10,7 @@ describe('Directive v-if', () => {
   })
 
   it('should check if value is falsy', () => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: '<div><span v-if="foo">hello</span></div>',
       data: { foo: false }
     }).$mount()
@@ -18,7 +18,7 @@ describe('Directive v-if', () => {
   })
 
   it('should update if value changed', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: '<div><span v-if="foo">hello</span></div>',
       data: { foo: true }
     }).$mount()
@@ -51,7 +51,7 @@ describe('Directive v-if', () => {
   })
 
   it('should work well with v-else', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: `
         <div>
           <span v-if="foo">hello</span>
@@ -89,7 +89,7 @@ describe('Directive v-if', () => {
   })
 
   it('should work well with v-for', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: `
         <div>
           <span v-for="item,i in list" v-if="item.value">{{i}}</span>
@@ -117,7 +117,7 @@ describe('Directive v-if', () => {
   })
 
   it('should work well with v-for and v-else', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: `
         <div>
           <span v-for="item,i in list" v-if="item.value">hello</span>
@@ -146,7 +146,7 @@ describe('Directive v-if', () => {
   })
 
   it('should work properly on component root', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: `
         <div>
           <test class="test"></test>
@@ -177,7 +177,7 @@ describe('Directive v-if', () => {
   it('should maintain stable list to avoid unnecessary patches', done => {
     const created = jasmine.createSpy()
     const destroyed = jasmine.createSpy()
-    const vm = new Vue({
+    const vm = new Blu({
       data: {
         ok: true
       },

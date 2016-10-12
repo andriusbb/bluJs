@@ -448,7 +448,7 @@ export function createPatchFunction (backend) {
   function assertNodeMatch (node, vnode) {
     if (vnode.tag) {
       return (
-        vnode.tag.indexOf('vue-component') === 0 ||
+        vnode.tag.indexOf('blu-component') === 0 ||
         vnode.tag === nodeOps.tagName(node).toLowerCase()
       )
     } else {

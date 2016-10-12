@@ -9,7 +9,7 @@ if (process.env.NODE_ENV !== 'production') {
 
   warn = (msg, vm) => {
     if (hasConsole && (!config.silent)) {
-      console.error(`[Vue warn]: ${msg} ` + (
+      console.error(`[Blu warn]: ${msg} ` + (
         vm ? formatLocation(formatComponentName(vm)) : ''
       ))
     }
@@ -19,12 +19,12 @@ if (process.env.NODE_ENV !== 'production') {
     if (vm.$root === vm) {
       return 'root instance'
     }
-    const name = vm._isVue
+    const name = vm._isBlu
       ? vm.$options.name || vm.$options._componentTag
       : vm.name
     return (
       (name ? `component <${name}>` : `anonymous component`) +
-      (vm._isVue && vm.$options.__file ? ` at ${vm.$options.__file}` : '')
+      (vm._isBlu && vm.$options.__file ? ` at ${vm.$options.__file}` : '')
     )
   }
 

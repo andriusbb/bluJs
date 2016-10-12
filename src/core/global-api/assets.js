@@ -3,12 +3,12 @@
 import config from '../config'
 import { warn, isPlainObject } from '../util/index'
 
-export function initAssetRegisters (Vue: GlobalAPI) {
+export function initAssetRegisters (Blu: GlobalAPI) {
   /**
    * Create asset registration methods.
    */
   config._assetTypes.forEach(type => {
-    Vue[type] = function (
+    Blu[type] = function (
       id: string,
       definition: Function | Object
     ): Function | Object | void {
@@ -26,7 +26,7 @@ export function initAssetRegisters (Vue: GlobalAPI) {
         }
         if (type === 'component' && isPlainObject(definition)) {
           definition.name = definition.name || id
-          definition = Vue.extend(definition)
+          definition = Blu.extend(definition)
         }
         if (type === 'directive' && typeof definition === 'function') {
           definition = { bind: definition, update: definition }

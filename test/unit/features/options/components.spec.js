@@ -1,9 +1,9 @@
-import Vue from 'vue'
+import Blu from 'blu'
 import { UA } from 'core/util/env'
 
 describe('Options components', () => {
   it('should accept plain object', () => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: '<test></test>',
       components: {
         test: {
@@ -16,10 +16,10 @@ describe('Options components', () => {
   })
 
   it('should accept extended constructor', () => {
-    const Test = Vue.extend({
+    const Test = Blu.extend({
       template: '<div>hi</div>'
     })
-    const vm = new Vue({
+    const vm = new Blu({
       template: '<test></test>',
       components: {
         test: Test
@@ -33,7 +33,7 @@ describe('Options components', () => {
     const myComp = {
       template: '<div>hi</div>'
     }
-    const vm = new Vue({
+    const vm = new Blu({
       template: '<my-comp></my-comp>',
       components: {
         myComp
@@ -47,7 +47,7 @@ describe('Options components', () => {
     const MyComp = {
       template: '<div>hi</div>'
     }
-    const vm = new Vue({
+    const vm = new Blu({
       template: '<my-comp></my-comp>',
       components: {
         MyComp
@@ -58,7 +58,7 @@ describe('Options components', () => {
   })
 
   it('should warn native HTML elements', () => {
-    new Vue({
+    new Blu({
       components: {
         div: { template: '<div></div>' }
       }
@@ -67,7 +67,7 @@ describe('Options components', () => {
   })
 
   it('should warn built-in elements', () => {
-    new Vue({
+    new Blu({
       components: {
         component: { template: '<div></div>' }
       }
@@ -80,7 +80,7 @@ describe('Options components', () => {
   // as their primary debugging browser, it doesn't really matter.
   if (!(UA && /android 4\.2/.test(UA))) {
     it('warn non-existent', () => {
-      new Vue({
+      new Blu({
         template: '<test></test>'
       }).$mount()
       expect('Unknown custom element: <test>').toHaveBeenWarned()

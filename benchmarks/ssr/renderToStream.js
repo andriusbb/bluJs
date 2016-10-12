@@ -1,7 +1,7 @@
 'use strict'
 
-const Vue = require('../../dist/vue.common.js')
-const createRenderer = require('../../packages/vue-server-renderer').createRenderer
+const Blu = require('../../dist/blu.common.js')
+const createRenderer = require('../../packages/blu-server-renderer').createRenderer
 const renderToStream = createRenderer().renderToStream
 const gridComponent = require('./common.js')
 
@@ -9,7 +9,7 @@ console.log('--- renderToStream --- ')
 const self = (global || root)
 self.s = self.performance.now()
 
-const stream = renderToStream(new Vue(gridComponent))
+const stream = renderToStream(new Blu(gridComponent))
 let str = ''
 const stats = []
 stream.on('data', chunk => {

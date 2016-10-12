@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import Blu from 'blu'
 import injectStyles from './inject-styles'
 import { isIE9 } from 'core/util/env'
 import { nextFrame } from 'web/runtime/transition-util'
@@ -18,7 +18,7 @@ if (!isIE9) {
     })
 
     it('dynamic components, simultaneous', done => {
-      const vm = new Vue({
+      const vm = new Blu({
         template: `<div>
           <transition>
             <component :is="view" class="test">
@@ -49,7 +49,7 @@ if (!isIE9) {
 
     it('dynamic components, out-in', done => {
       let next
-      const vm = new Vue({
+      const vm = new Blu({
         template: `<div>
           <transition name="test" mode="out-in" @after-leave="afterLeave">
             <component :is="view" class="test">
@@ -94,7 +94,7 @@ if (!isIE9) {
     // #3440
     it('dynamic components, out-in (with extra re-render)', done => {
       let next
-      const vm = new Vue({
+      const vm = new Blu({
         template: `<div>
           <transition name="test" mode="out-in" @after-leave="afterLeave">
             <component :is="view" class="test">
@@ -141,7 +141,7 @@ if (!isIE9) {
 
     it('dynamic components, in-out', done => {
       let next
-      const vm = new Vue({
+      const vm = new Blu({
         template: `<div>
           <transition name="test" mode="in-out" @after-enter="afterEnter">
             <component :is="view" class="test">
@@ -192,7 +192,7 @@ if (!isIE9) {
 
     it('dynamic components, in-out with early cancel', done => {
       let next
-      const vm = new Vue({
+      const vm = new Blu({
         template: `<div>
           <transition name="test" mode="in-out" @after-enter="afterEnter">
             <component :is="view" class="test"></component>
@@ -257,7 +257,7 @@ if (!isIE9) {
     })
 
     it('normal elements with different keys, simultaneous', done => {
-      const vm = new Vue({
+      const vm = new Blu({
         template: `<div>
           <transition>
             <div :key="view" class="test">{{view}}</div>
@@ -287,7 +287,7 @@ if (!isIE9) {
 
     it('normal elements with different keys, out-in', done => {
       let next
-      const vm = new Vue({
+      const vm = new Blu({
         template: `<div>
           <transition name="test" mode="out-in" @after-leave="afterLeave">
             <div :key="view" class="test">{{view}}</div>
@@ -330,7 +330,7 @@ if (!isIE9) {
 
     it('normal elements with different keys, in-out', done => {
       let next
-      const vm = new Vue({
+      const vm = new Blu({
         template: `<div>
           <transition name="test" mode="in-out" @after-enter="afterEnter">
             <div :key="view" class="test">{{view}}</div>
@@ -379,7 +379,7 @@ if (!isIE9) {
     })
 
     it('warn invaid mode', () => {
-      new Vue({
+      new Blu({
         template: '<transition mode="foo"><div>123</div></transition>'
       }).$mount()
       expect('invalid <transition> mode: foo').toHaveBeenWarned()

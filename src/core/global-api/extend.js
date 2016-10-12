@@ -3,19 +3,19 @@
 import config from '../config'
 import { warn, mergeOptions } from '../util/index'
 
-export function initExtend (Vue: GlobalAPI) {
+export function initExtend (Blu: GlobalAPI) {
   /**
-   * Each instance constructor, including Vue, has a unique
+   * Each instance constructor, including Blu, has a unique
    * cid. This enables us to create wrapped "child
    * constructors" for prototypal inheritance and cache them.
    */
-  Vue.cid = 0
+  Blu.cid = 0
   let cid = 1
 
   /**
    * Class inheritance
    */
-  Vue.extend = function (extendOptions: Object): Function {
+  Blu.extend = function (extendOptions: Object): Function {
     extendOptions = extendOptions || {}
     const Super = this
     const isFirstExtend = Super.cid === 0
@@ -32,7 +32,7 @@ export function initExtend (Vue: GlobalAPI) {
         name = null
       }
     }
-    const Sub = function VueComponent (options) {
+    const Sub = function BluComponent (options) {
       this._init(options)
     }
     Sub.prototype = Object.create(Super.prototype)

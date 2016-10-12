@@ -17,14 +17,14 @@ export function initEvents (vm: Component) {
   }
 }
 
-export function eventsMixin (Vue: Class<Component>) {
-  Vue.prototype.$on = function (event: string, fn: Function): Component {
+export function eventsMixin (Blu: Class<Component>) {
+  Blu.prototype.$on = function (event: string, fn: Function): Component {
     const vm: Component = this
     ;(vm._events[event] || (vm._events[event] = [])).push(fn)
     return vm
   }
 
-  Vue.prototype.$once = function (event: string, fn: Function): Component {
+  Blu.prototype.$once = function (event: string, fn: Function): Component {
     const vm: Component = this
     function on () {
       vm.$off(event, on)
@@ -35,7 +35,7 @@ export function eventsMixin (Vue: Class<Component>) {
     return vm
   }
 
-  Vue.prototype.$off = function (event?: string, fn?: Function): Component {
+  Blu.prototype.$off = function (event?: string, fn?: Function): Component {
     const vm: Component = this
     // all
     if (!arguments.length) {
@@ -64,7 +64,7 @@ export function eventsMixin (Vue: Class<Component>) {
     return vm
   }
 
-  Vue.prototype.$emit = function (event: string): Component {
+  Blu.prototype.$emit = function (event: string): Component {
     const vm: Component = this
     let cbs = vm._events[event]
     if (cbs) {

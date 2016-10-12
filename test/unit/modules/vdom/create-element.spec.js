@@ -1,11 +1,11 @@
-import Vue from 'vue'
+import Blu from 'blu'
 import { createElement } from 'core/vdom/create-element'
 import { emptyVNode } from 'core/vdom/vnode'
 import { bind } from 'shared/util'
 
 describe('create-element', () => {
   it('render vnode with basic reserved tag using createElement', () => {
-    const vm = new Vue({
+    const vm = new Blu({
       data: { msg: 'hello world' }
     })
     const h = bind(createElement, vm)
@@ -20,7 +20,7 @@ describe('create-element', () => {
   })
 
   it('render vnode with component using createElement', () => {
-    const vm = new Vue({
+    const vm = new Blu({
       data: { message: 'hello world' },
       components: {
         'my-component': {
@@ -30,7 +30,7 @@ describe('create-element', () => {
     })
     const h = bind(createElement, vm)
     const vnode = h('my-component', { props: { msg: vm.message }})
-    expect(vnode.tag).toMatch(/vue-component-[0-9]+/)
+    expect(vnode.tag).toMatch(/blu-component-[0-9]+/)
     expect(vnode.componentOptions.propsData).toEqual({ msg: vm.message })
     expect(vnode.children).toBeUndefined()
     expect(vnode.text).toBeUndefined()
@@ -40,7 +40,7 @@ describe('create-element', () => {
   })
 
   it('render vnode with custom tag using createElement', () => {
-    const vm = new Vue({
+    const vm = new Blu({
       data: { msg: 'hello world' }
     })
     const h = bind(createElement, vm)
@@ -57,7 +57,7 @@ describe('create-element', () => {
   })
 
   it('render empty vnode with falsy tag using createElement', () => {
-    const vm = new Vue({
+    const vm = new Blu({
       data: { msg: 'hello world' }
     })
     const h = bind(createElement, vm)
@@ -66,14 +66,14 @@ describe('create-element', () => {
   })
 
   it('render vnode with not string tag using createElement', () => {
-    const vm = new Vue({
+    const vm = new Blu({
       data: { msg: 'hello world' }
     })
     const h = bind(createElement, vm)
-    const vnode = h(Vue.extend({ // Component class
+    const vnode = h(Blu.extend({ // Component class
       props: ['msg']
     }), { props: { msg: vm.message }})
-    expect(vnode.tag).toMatch(/vue-component-[0-9]+/)
+    expect(vnode.tag).toMatch(/blu-component-[0-9]+/)
     expect(vnode.componentOptions.propsData).toEqual({ msg: vm.message })
     expect(vnode.children).toBeUndefined()
     expect(vnode.text).toBeUndefined()
@@ -83,7 +83,7 @@ describe('create-element', () => {
   })
 
   it('render vnode with createElement with children', () => {
-    const vm = new Vue({})
+    const vm = new Blu({})
     const h = bind(createElement, vm)
     const vnode = h('p', void 0, [h('br'), 'hello world', h('br')])
     expect(vnode.children[0].tag).toBe('br')
@@ -92,7 +92,7 @@ describe('create-element', () => {
   })
 
   it('render vnode with children, omitting data', () => {
-    const vm = new Vue({})
+    const vm = new Blu({})
     const h = bind(createElement, vm)
     const vnode = h('p', [h('br'), 'hello world', h('br')])
     expect(vnode.children[0].tag).toBe('br')
@@ -101,7 +101,7 @@ describe('create-element', () => {
   })
 
   it('render svg elements with correct namespace', () => {
-    const vm = new Vue({})
+    const vm = new Blu({})
     const h = bind(createElement, vm)
     const vnode = h('svg', [h('a', [h('foo', [h('bar')])])])
     expect(vnode.ns).toBe('svg')
@@ -112,7 +112,7 @@ describe('create-element', () => {
   })
 
   it('render MathML elements with correct namespace', () => {
-    const vm = new Vue({})
+    const vm = new Blu({})
     const h = bind(createElement, vm)
     const vnode = h('math', [h('matrix')])
     expect(vnode.ns).toBe('math')
@@ -124,7 +124,7 @@ describe('create-element', () => {
   })
 
   it('warn observed data objects', () => {
-    new Vue({
+    new Blu({
       data: {
         data: {}
       },

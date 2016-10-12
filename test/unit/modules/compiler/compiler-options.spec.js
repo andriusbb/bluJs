@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import Blu from 'blu'
 import { compile } from 'entries/web-compiler'
 import { getAndRemoveAttr } from 'compiler/helpers'
 
@@ -66,7 +66,7 @@ describe('compile options', () => {
     expect(errors).toEqual([])
 
     const renderFn = new Function(render)
-    const vm = new Vue({
+    const vm = new Blu({
       data: {
         msg: 'hello'
       },

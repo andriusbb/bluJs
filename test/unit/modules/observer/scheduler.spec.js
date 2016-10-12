@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import Blu from 'blu'
 import config from 'core/config'
 import { queueWatcher } from 'core/observer/scheduler'
 
@@ -48,7 +48,7 @@ describe('Scheduler', () => {
 
   it('call user watchers before component re-render', done => {
     const calls = []
-    const vm = new Vue({
+    const vm = new Blu({
       data: {
         a: 1
       },
@@ -69,7 +69,7 @@ describe('Scheduler', () => {
   it('call user watcher triggered by component re-render immediately', done => {
     // this happens when a component re-render updates the props of a child
     const calls = []
-    const vm = new Vue({
+    const vm = new Blu({
       data: {
         a: 1
       },

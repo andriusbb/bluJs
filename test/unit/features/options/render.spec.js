@@ -1,8 +1,8 @@
-import Vue from 'entries/web-runtime'
+import Blu from 'entries/web-runtime'
 
 describe('Options render', () => {
   it('basic usage', () => {
-    const vm = new Vue({
+    const vm = new Blu({
       render (h) {
         const children = []
         for (let i = 0; i < this.items.length; i++) {
@@ -23,7 +23,7 @@ describe('Options render', () => {
   })
 
   it('allow null data', () => {
-    const vm = new Vue({
+    const vm = new Blu({
       render (h) {
         return h('div', null, 'hello' /* string as children*/)
       }
@@ -33,7 +33,7 @@ describe('Options render', () => {
   })
 
   it('should warn non `render` option and non `template` option', () => {
-    new Vue().$mount()
+    new Blu().$mount()
     expect('Failed to mount component: template or render function not defined.').toHaveBeenWarned()
   })
 })

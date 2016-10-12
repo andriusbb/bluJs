@@ -1,7 +1,7 @@
 'use strict'
 
-const Vue = require('../../dist/vue.common.js')
-const createRenderer = require('../../packages/vue-server-renderer').createRenderer
+const Blu = require('../../dist/blu.common.js')
+const createRenderer = require('../../packages/blu-server-renderer').createRenderer
 const renderToString = createRenderer().renderToString
 const gridComponent = require('./common.js')
 
@@ -9,7 +9,7 @@ console.log('--- renderToString --- ')
 const self = (global || root)
 self.s = self.performance.now()
 
-renderToString(new Vue(gridComponent), () => {
+renderToString(new Blu(gridComponent), () => {
   console.log('Complete time: ' + (self.performance.now() - self.s).toFixed(2) + 'ms')
   console.log()
 })

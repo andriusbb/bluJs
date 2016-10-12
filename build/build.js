@@ -12,7 +12,7 @@ if (!fs.existsSync('dist')) {
 const version = process.env.VERSION || require('../package.json').version
 const main = fs
   .readFileSync('src/core/index.js', 'utf-8')
-  .replace(/Vue\.version = '[^']+'/, "Vue.version = '" + version + "'")
+  .replace(/Blu\.version = '[^']+'/, "Blu.version = '" + version + "'")
 fs.writeFileSync('src/core/index.js', main)
 
 let builds = require('./config').getAllBuilds()

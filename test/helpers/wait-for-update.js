@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import Blu from 'blu'
 
 // helper for async assertions.
 // Use like this:
@@ -30,7 +30,7 @@ window.waitForUpdate = initialCb => {
       }
       if (!hasError && !job.wait) {
         if (queue.length) {
-          Vue.nextTick(shift)
+          Blu.nextTick(shift)
         }
       }
     } else if (job && job.fail) {
@@ -38,7 +38,7 @@ window.waitForUpdate = initialCb => {
     }
   }
 
-  Vue.nextTick(() => {
+  Blu.nextTick(() => {
     if (!queue.length || !queue[queue.length - 1].fail) {
       console.warn('waitForUpdate chain is missing .then(done)')
     }

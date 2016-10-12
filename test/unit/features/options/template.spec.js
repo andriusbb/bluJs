@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import Blu from 'blu'
 
 describe('Options template', () => {
   let el
@@ -15,7 +15,7 @@ describe('Options template', () => {
   })
 
   it('basic usage', () => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: '<div>{{message}}</div>',
       data: { message: 'hello world' }
     }).$mount()
@@ -24,7 +24,7 @@ describe('Options template', () => {
   })
 
   it('id reference', () => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: '#app',
       data: { message: 'hello world' }
     }).$mount()
@@ -35,7 +35,7 @@ describe('Options template', () => {
   it('DOM element', () => {
     const elm = document.createElement('p')
     elm.innerHTML = '<p>{{message}}</p>'
-    const vm = new Vue({
+    const vm = new Blu({
       template: elm,
       data: { message: 'hello world' }
     }).$mount()
@@ -44,15 +44,15 @@ describe('Options template', () => {
   })
 
   it('invalid template', () => {
-    new Vue({
-      template: Vue,
+    new Blu({
+      template: Blu,
       data: { message: 'hello world' }
     }).$mount()
     expect('invalid template option').toHaveBeenWarned()
   })
 
   it('warn error in generated function', () => {
-    new Vue({
+    new Blu({
       template: '<div v-if="!@"><span>{{ a"" }}</span><span>{{ do + 1 }}</span></div>'
     }).$mount()
     expect('failed to compile template').toHaveBeenWarned()
@@ -62,7 +62,7 @@ describe('Options template', () => {
   })
 
   it('warn error in generated function (v-for)', () => {
-    new Vue({
+    new Blu({
       template: '<div><div v-for="(1, 2) in a----"></div></div>'
     }).$mount()
     expect('failed to compile template').toHaveBeenWarned()

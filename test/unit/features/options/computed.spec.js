@@ -1,8 +1,8 @@
-import Vue from 'vue'
+import Blu from 'blu'
 
 describe('Options computed', () => {
   it('basic usage', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: '<div>{{ b }}</div>',
       data: {
         a: 1
@@ -23,7 +23,7 @@ describe('Options computed', () => {
   })
 
   it('with setter', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: '<div>{{ b }}</div>',
       data: {
         a: 1
@@ -50,7 +50,7 @@ describe('Options computed', () => {
 
   it('watching computed', done => {
     const spy = jasmine.createSpy('watch computed')
-    const vm = new Vue({
+    const vm = new Blu({
       data: {
         a: 1
       },
@@ -67,7 +67,7 @@ describe('Options computed', () => {
 
   it('caching', () => {
     const spy = jasmine.createSpy('cached computed')
-    const vm = new Vue({
+    const vm = new Blu({
       data: {
         a: 1
       },
@@ -87,7 +87,7 @@ describe('Options computed', () => {
 
   it('cache: false', () => {
     const spy = jasmine.createSpy('cached computed')
-    const vm = new Vue({
+    const vm = new Blu({
       data: {
         a: 1
       },

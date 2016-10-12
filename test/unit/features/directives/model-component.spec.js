@@ -1,8 +1,8 @@
-import Vue from 'vue'
+import Blu from 'blu'
 
 describe('Directive v-model component', () => {
   it('should work', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       data: {
         msg: 'hello'
       },

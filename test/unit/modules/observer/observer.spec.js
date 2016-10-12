@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import Blu from 'blu'
 import {
   Observer,
   observe,
@@ -13,8 +13,8 @@ describe('Observer', () => {
     // skip primitive value
     const ob1 = observe(1)
     expect(ob1).toBeUndefined()
-    // avoid vue instance
-    const ob2 = observe(new Vue())
+    // avoid blu instance
+    const ob2 = observe(new Blu())
     expect(ob2).toBeUndefined()
     // avoid frozen objects
     const ob3 = observe(Object.freeze({}))
@@ -281,42 +281,42 @@ describe('Observer', () => {
     expect(dep3.notify.calls.count()).toBe(2)
   })
 
-  it('warning set/delete on a Vue instance', done => {
-    const vm = new Vue({
+  it('warning set/delete on a Blu instance', done => {
+    const vm = new Blu({
       template: '<div>{{a}}</div>',
       data: { a: 1 }
     }).$mount()
     expect(vm.$el.outerHTML).toBe('<div>1</div>')
-    Vue.set(vm, 'a', 2)
+    Blu.set(vm, 'a', 2)
     waitForUpdate(() => {
       expect(vm.$el.outerHTML).toBe('<div>2</div>')
-      expect('Avoid adding reactive properties to a Vue instance').not.toHaveBeenWarned()
-      Vue.delete(vm, 'a')
+      expect('Avoid adding reactive properties to a Blu instance').not.toHaveBeenWarned()
+      Blu.delete(vm, 'a')
     }).then(() => {
-      expect('Avoid deleting properties on a Vue instance').toHaveBeenWarned()
+      expect('Avoid deleting properties on a Blu instance').toHaveBeenWarned()
       expect(vm.$el.outerHTML).toBe('<div>2</div>')
-      Vue.set(vm, 'b', 123)
-      expect('Avoid adding reactive properties to a Vue instance').toHaveBeenWarned()
+      Blu.set(vm, 'b', 123)
+      expect('Avoid adding reactive properties to a Blu instance').toHaveBeenWarned()
     }).then(done)
   })
 
-  it('warning set/delete on Vue instance root $data', done => {
+  it('warning set/delete on Blu instance root $data', done => {
     const data = { a: 1 }
-    const vm = new Vue({
+    const vm = new Blu({
       template: '<div>{{a}}</div>',
       data
     }).$mount()
     expect(vm.$el.outerHTML).toBe('<div>1</div>')
-    Vue.set(data, 'a', 2)
+    Blu.set(data, 'a', 2)
     waitForUpdate(() => {
       expect(vm.$el.outerHTML).toBe('<div>2</div>')
-      expect('Avoid adding reactive properties to a Vue instance').not.toHaveBeenWarned()
-      Vue.delete(data, 'a')
+      expect('Avoid adding reactive properties to a Blu instance').not.toHaveBeenWarned()
+      Blu.delete(data, 'a')
     }).then(() => {
-      expect('Avoid deleting properties on a Vue instance').toHaveBeenWarned()
+      expect('Avoid deleting properties on a Blu instance').toHaveBeenWarned()
       expect(vm.$el.outerHTML).toBe('<div>2</div>')
-      Vue.set(data, 'b', 123)
-      expect('Avoid adding reactive properties to a Vue instance').toHaveBeenWarned()
+      Blu.set(data, 'b', 123)
+      expect('Avoid adding reactive properties to a Blu instance').toHaveBeenWarned()
     }).then(done)
   })
 

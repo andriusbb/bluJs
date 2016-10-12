@@ -1,4 +1,4 @@
-import Vue = require("../index");
+import Blu = require("../index");
 import { PluginFunction, PluginObject } from "../index";
 
 class Option {
@@ -7,13 +7,13 @@ class Option {
 }
 
 const plugin: PluginObject<Option> = {
-  install(Vue, option) {
+  install(Blu, option) {
     if (typeof option !== "undefined") {
       const {prefix, suffix} = option;
     }
   }
 }
-const installer: PluginFunction<Option> = function(Vue, option) { }
+const installer: PluginFunction<Option> = function(Blu, option) { }
 
-Vue.use(plugin, new Option);
-Vue.use(installer, new Option);
+Blu.use(plugin, new Option);
+Blu.use(installer, new Option);

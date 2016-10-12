@@ -1,9 +1,9 @@
-import Vue from 'vue'
+import Blu from 'blu'
 
 describe('Instance properties', () => {
   it('$data', () => {
     const data = { a: 1 }
-    const vm = new Vue({
+    const vm = new Blu({
       data
     })
     expect(vm.a).toBe(1)
@@ -17,7 +17,7 @@ describe('Instance properties', () => {
   })
 
   it('$options', () => {
-    const A = Vue.extend({
+    const A = Blu.extend({
       methods: {
         a () {}
       }
@@ -32,7 +32,7 @@ describe('Instance properties', () => {
   })
 
   it('$root/$children', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: '<div><test v-if="ok"></test></div>',
       data: { ok: true },
       components: {
@@ -63,7 +63,7 @@ describe('Instance properties', () => {
         calls.push(`${name}:${this.$parent.$options.name}`)
       }
     })
-    new Vue({
+    new Blu({
       template: `
         <div>
           <outer><middle><inner></inner></middle></outer>
@@ -81,10 +81,10 @@ describe('Instance properties', () => {
   })
 
   it('$isServer', () => {
-    const vm = new Vue()
+    const vm = new Blu()
     expect(vm.$isServer).toBe(false)
-    Vue.config._isServer = true
+    Blu.config._isServer = true
     expect(vm.$isServer).toBe(true)
-    Vue.config._isServer = false
+    Blu.config._isServer = false
   })
 })

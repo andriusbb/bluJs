@@ -1,10 +1,10 @@
-import Vue from 'vue'
+import Blu from 'blu'
 
 describe('Options parent', () => {
   it('should work', () => {
-    const parent = new Vue({}).$mount()
+    const parent = new Blu({}).$mount()
 
-    const child = new Vue({
+    const child = new Blu({
       parent: parent
     }).$mount()
 

@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import Blu from 'blu'
 
 describe('Options directives', () => {
   it('basic usage', done => {
@@ -14,7 +14,7 @@ describe('Options directives', () => {
       expect(binding.modifiers).toEqual({ hello: true })
     }
 
-    const vm = new Vue({
+    const vm = new Blu({
       template: '<div class="hi"><div v-if="ok" v-test:arg.hello="a">{{ msg }}</div></div>',
       data: {
         msg: 'hi',
@@ -84,7 +84,7 @@ describe('Options directives', () => {
 
   it('function shorthand', done => {
     const spy = jasmine.createSpy('directive')
-    const vm = new Vue({
+    const vm = new Blu({
       template: '<div v-test:arg.hello="a"></div>',
       data: { a: 'foo' },
       directives: {
@@ -106,13 +106,13 @@ describe('Options directives', () => {
 
   it('function shorthand (global)', done => {
     const spy = jasmine.createSpy('directive')
-    Vue.directive('test', function (el, binding, vnode) {
+    Blu.directive('test', function (el, binding, vnode) {
       expect(vnode.context).toBe(vm)
       expect(binding.arg).toBe('arg')
       expect(binding.modifiers).toEqual({ hello: true })
       spy(binding.value, binding.oldValue)
     })
-    const vm = new Vue({
+    const vm = new Blu({
       template: '<div v-test:arg.hello="a"></div>',
       data: { a: 'foo' }
     })
@@ -121,12 +121,12 @@ describe('Options directives', () => {
     vm.a = 'bar'
     waitForUpdate(() => {
       expect(spy).toHaveBeenCalledWith('bar', 'foo')
-      delete Vue.options.directives.test
+      delete Blu.options.directives.test
     }).then(done)
   })
 
   it('should teardown directives on old vnodes when new vnodes have none', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       data: {
         ok: true
       },
@@ -154,7 +154,7 @@ describe('Options directives', () => {
   it('should properly handle same node with different directive sets', done => {
     const spies = {}
     const createSpy = name => (spies[name] = jasmine.createSpy(name))
-    const vm = new Vue({
+    const vm = new Blu({
       data: {
         ok: true,
         val: 123
@@ -222,7 +222,7 @@ describe('Options directives', () => {
   })
 
   it('warn non-existent', () => {
-    new Vue({
+    new Blu({
       template: '<div v-test></div>'
     }).$mount()
     expect('Failed to resolve directive: test').toHaveBeenWarned()

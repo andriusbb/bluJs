@@ -9,7 +9,7 @@ var stats = [
 ]
 
 // A resusable polygon graph component
-Vue.component('polygraph', {
+Blu.component('polygraph', {
   props: ['stats'],
   template: '#polygraph-template',
   computed: {
@@ -60,7 +60,7 @@ function valueToPoint (value, index, total) {
 }
 
 // bootstrap the demo
-new Vue({
+new Blu({
   el: '#demo',
   data: {
     newLabel: '',

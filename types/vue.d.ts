@@ -28,25 +28,25 @@ export type CreateElement = {
   (tag: AsyncComponent, data?: VNodeData, children?: VNodeChildren): VNode;
 }
 
-export declare class Vue {
+export declare class Blu {
 
-  constructor(options?: ComponentOptions<Vue>);
+  constructor(options?: ComponentOptions<Blu>);
 
   $data: Object;
   readonly $el: HTMLElement;
   readonly $options: ComponentOptions<this>;
-  readonly $parent: Vue;
-  readonly $root: Vue;
-  readonly $children: Vue[];
-  readonly $refs: { [key: string]: Vue | Element | Vue[] | Element[]};
+  readonly $parent: Blu;
+  readonly $root: Blu;
+  readonly $children: Blu[];
+  readonly $refs: { [key: string]: Blu | Element | Blu[] | Element[]};
   readonly $slots: { [key: string]: VNode[] };
   readonly $isServer: boolean;
 
   $mount(elementOrSelector?: Element | String, hydrating?: boolean): this;
   $forceUpdate(): void;
   $destroy(): void;
-  $set: typeof Vue.set;
-  $delete: typeof Vue.delete;
+  $set: typeof Blu.set;
+  $delete: typeof Blu.delete;
   $watch(
     expOrFn: string | Function,
     callback: WatchHandler<this>,
@@ -63,11 +63,11 @@ export declare class Vue {
     silent: boolean;
     optionMergeStrategies: any;
     devtools: boolean;
-    errorHandler(err: Error, vm: Vue): void;
+    errorHandler(err: Error, vm: Blu): void;
     keyCodes: { [key: string]: number };
   }
 
-  static extend(options: ComponentOptions<Vue> | FunctionalComponentOptions): typeof Vue;
+  static extend(options: ComponentOptions<Blu> | FunctionalComponentOptions): typeof Blu;
   static nextTick(callback: () => void, context?: any[]): void;
   static set<T>(object: Object, key: string, value: T): T;
   static set<T>(array: T[], key: number, value: T): T;
@@ -78,12 +78,12 @@ export declare class Vue {
     definition?: DirectiveOptions | DirectiveFunction
   ): DirectiveOptions;
   static filter(id: string, definition?: Function): Function;
-  static component(id: string, definition?: Component | AsyncComponent): typeof Vue;
+  static component(id: string, definition?: Component | AsyncComponent): typeof Blu;
 
   static use<T>(plugin: PluginObject<T> | PluginFunction<T>, options?: T): void;
-  static mixin(mixin: typeof Vue | ComponentOptions<Vue>): void;
+  static mixin(mixin: typeof Blu | ComponentOptions<Blu>): void;
   static compile(template: string): {
-    render(createElement: typeof Vue.prototype.$createElement): VNode;
+    render(createElement: typeof Blu.prototype.$createElement): VNode;
     staticRenderFns: (() => VNode)[];
   };
 }

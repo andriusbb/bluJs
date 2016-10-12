@@ -17,10 +17,10 @@
     "../options.d.ts",
     "../plugin.d.ts",
     "../vnode.d.ts",
-    "../vue.d.ts",
+    "../blu.d.ts",
     "options-test.ts",
     "plugin-test.ts",
-    "vue-test.ts",
+    "blu-test.ts",
     "augmentation-test.ts"
   ],
   "compileOnSave": false

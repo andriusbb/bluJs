@@ -1,8 +1,8 @@
-import Vue from 'vue'
+import Blu from 'blu'
 
 describe('Options methods', () => {
   it('should have correct context', () => {
-    const vm = new Vue({
+    const vm = new Blu({
       data: {
         a: 1
       },
@@ -17,7 +17,7 @@ describe('Options methods', () => {
   })
 
   it('should warn undefined methods', () => {
-    new Vue({
+    new Blu({
       methods: {
         hello: undefined
       }

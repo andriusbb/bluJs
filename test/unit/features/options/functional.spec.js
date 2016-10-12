@@ -1,8 +1,8 @@
-import Vue from 'vue'
+import Blu from 'blu'
 
 describe('Options functional', () => {
   it('should work', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       data: { test: 'foo' },
       template: '<div><wrap :msg="test">bar</wrap></div>',
       components: {
@@ -23,7 +23,7 @@ describe('Options functional', () => {
   })
 
   it('should support slots', () => {
-    const vm = new Vue({
+    const vm = new Blu({
       data: { test: 'foo' },
       template: '<div><wrap><div slot="a">foo</div><div slot="b">bar</div></wrap></div>',
       components: {
@@ -42,7 +42,7 @@ describe('Options functional', () => {
 
   it('should let vnode raw data pass through', done => {
     const onValid = jasmine.createSpy('valid')
-    const vm = new Vue({
+    const vm = new Blu({
       data: { msg: 'hello' },
       template: `<div>
         <validate field="field1" @valid="onValid">

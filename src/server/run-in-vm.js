@@ -23,7 +23,7 @@ export default function runInVm (code, _context = {}) {
     const wrapper = NativeModule.wrap(code)
     const context = createContext(_context)
     const compiledWrapper = vm.runInNewContext(wrapper, context, {
-      filename: '__vue_ssr_bundle__',
+      filename: '__blu_ssr_bundle__',
       displayErrors: true
     })
     const m = { exports: {}}

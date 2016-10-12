@@ -1,8 +1,8 @@
-import Vue from 'vue'
+import Blu from 'blu'
 
 describe('Instance methods data', () => {
   it('$set/$delete', done => {
-    const vm = new Vue({
+    const vm = new Blu({
       template: '<div>{{ a.msg }}</div>',
       data: {
         a: {}
@@ -21,7 +21,7 @@ describe('Instance methods data', () => {
   describe('$watch', () => {
     let vm, spy
     beforeEach(() => {
-      vm = new Vue({
+      vm = new Blu({
         data: {
           a: {
             b: 1

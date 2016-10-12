@@ -1,4 +1,4 @@
-import Vue from 'vue'
+import Blu from 'blu'
 import { patch } from 'web/runtime/patch'
 import VNode from 'core/vdom/vnode'
 
@@ -52,7 +52,7 @@ describe('vdom patch: element', () => {
 
   it('should create element with scope attribute', () => {
     const vnode = new VNode('div')
-    vnode.context = new Vue({ _scopeId: 'foo' })
+    vnode.context = new Blu({ _scopeId: 'foo' })
     const elm = patch(null, vnode)
     expect(elm.hasAttribute('foo')).toBe(true)
   })
